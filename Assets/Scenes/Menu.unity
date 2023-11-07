@@ -990,7 +990,7 @@ GameObject:
   m_Component:
   - component: {fileID: 410693547}
   m_Layer: 5
-  m_Name: Settings
+  m_Name: Settings Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1160,7 +1160,7 @@ GameObject:
   m_Component:
   - component: {fileID: 577360588}
   m_Layer: 5
-  m_Name: ExitConfirmation
+  m_Name: Exit Confirmation Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1269,7 +1269,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 795595220}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884767306}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: LevelSelectionFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &795595220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1562,6 +1574,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c9e6fb04b90a44e4b931b3b051d1f7a4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startMenu: {fileID: 2044366689}
+  mainMenu: {fileID: 1066930853}
+  settingsMenu: {fileID: 410693546}
+  quitConfirmationMenu: {fileID: 577360587}
+  levelSelectionMenu: {fileID: 1058482322}
 --- !u!1 &941679763
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,7 +1844,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1058482323}
   m_Layer: 5
-  m_Name: LevelMenu
+  m_Name: Level Selection Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1868,12 +1885,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1066930854}
   m_Layer: 5
-  m_Name: MainMenu
+  m_Name: Main Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1066930854
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2648,7 +2665,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1338790988}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884767306}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: QuitConfirmationFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1338790988
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2769,7 +2798,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1359082079}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884767306}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: StartFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1359082079
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2890,7 +2931,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1431400944}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884767306}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: BackFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1431400944
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3132,7 +3185,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1597072038}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884767306}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: QuitFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1597072038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3371,7 +3436,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1633906409}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884767306}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: SettingsFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1633906409
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3694,7 +3771,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1778475464}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884767306}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: BackFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1778475464
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3949,7 +4038,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1903999432}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 884767306}
+        m_TargetAssemblyTypeName: MenuController, Assembly-CSharp
+        m_MethodName: BackFunction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1903999432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4073,12 +4174,12 @@ GameObject:
   m_Component:
   - component: {fileID: 2044366690}
   m_Layer: 5
-  m_Name: Start
+  m_Name: Start Menu
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &2044366690
 RectTransform:
   m_ObjectHideFlags: 0
