@@ -25,6 +25,11 @@ public class Conductor : MonoBehaviour
     //an AudioSource attached to this GameObject that will play the music.
     AudioSource musicSource;
 
+    // They need to contain indicators and spawn points in the following order:
+    // Left, Middle left, Middle right and right
+    public Transform[] spawnPoints;
+    public Transform[] indicatorPoints;
+
     //Notes that will be spawned throughout the song.
     public Note[] notes;
 
@@ -42,9 +47,7 @@ public class Conductor : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         instance = this;
-
     }
 
     // Start is called before the first frame update
@@ -67,14 +70,19 @@ public class Conductor : MonoBehaviour
         //This checks if it is time to spawn a note
         if (notesIndex < notes.Length && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
         {
-            Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(notes[notesIndex].spawnPoint.position, notes[notesIndex].targetPoint.position, notes[notesIndex].targetBeat);
+            Note spawnedNote = notes[notesIndex];
+            Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(
+                spawnPoints[(int)spawnedNote.column].position,
+                indicatorPoints[(int)spawnedNote.column].position,
+                spawnedNote.targetBeat);
             //We move to the following note
             notesIndex++;
         }
     }
 
+    // I use this to set the note's column faster in the Inspector
     [Serializable]
-    public enum Row
+    public enum Column
     {
         Left,
         MiddleLeft,
@@ -82,13 +90,12 @@ public class Conductor : MonoBehaviour
         Right
     }
 
+    //Structure containing data about notes that will be spawned
     [Serializable]
     public class Note
     {
         public float targetBeat;
-        public Transform spawnPoint;
-        public Transform targetPoint;
-        public Row row;
+        public Column column;
     }
 
 }
