@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 6638230987175391617}
   m_Layer: 0
   m_Name: Fish
-  m_TagString: Untagged
+  m_TagString: Fish
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -118,6 +118,3 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a44c0c76fb7cae49bd2ec766f6679f0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  start: {fileID: 8175343329742159028}
-  end: {fileID: 0}
-  spawnBeat: 5
