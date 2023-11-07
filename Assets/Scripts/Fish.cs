@@ -27,5 +27,6 @@ public class Fish : MonoBehaviour
             interpolationVariable = Conductor.instance.prespawnBeats - (beatOfThisNote - Conductor.instance.songPositionInBeats);
             yield return null;
         }
+        transform.position = Vector3.Lerp(startPoint, endPoint, 1);
     }
 }
