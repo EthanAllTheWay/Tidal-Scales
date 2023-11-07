@@ -10,7 +10,7 @@ public class Conductor : MonoBehaviour
 
     //The number of seconds for each song beat
     //It is the crotchet (I think...)
-    public float secPerBeat;
+    public float crotchet;
 
     //Current song position, in seconds
     public float songPosition;
@@ -28,16 +28,16 @@ public class Conductor : MonoBehaviour
     public float[] notes;
 
     public static Conductor instance;
-    int notesIndex = 0;
+    private int notesIndex = 0;
     public GameObject notePrefab;
 
     //Point where the notes will spawn
     public Transform spawnPoint;
 
     //Point where the indicator is placed.
-    public Transform tarjetPoint;
+    public Transform targetPoint;
 
-    //It controls how many beats are before the note's beat tarjet.
+    //It controls how many beats are before the note's beat target.
     //More prespawn beats means that the note will spawn earlier.
     public float prespawnBeats;
 
@@ -57,7 +57,7 @@ public class Conductor : MonoBehaviour
     {
         // We initialize our variables and play the music.
         musicSource = GetComponent<AudioSource>();
-        secPerBeat = 60f / songBpm;
+        crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
         musicSource.Play();
     }
@@ -67,12 +67,12 @@ public class Conductor : MonoBehaviour
     {
         // We update our variables
         songPosition = (float)AudioSettings.dspTime - dspSongTime;
-        songPositionInBeats = songPosition / secPerBeat;
+        songPositionInBeats = songPosition / crotchet;
 
         //This checks if it is time to spawn a note
         if (notesIndex < notes.Length && notes[notesIndex] < songPositionInBeats + prespawnBeats)
         {
-            Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(spawnPoint.position, tarjetPoint.position, notes[notesIndex]);
+            Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(spawnPoint.position, targetPoint.position, notes[notesIndex]);
             //We move to the following note
             notesIndex++;
         }

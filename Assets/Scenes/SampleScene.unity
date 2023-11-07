@@ -291,18 +291,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   songBpm: 190
-  secPerBeat: 0
+  crotchet: 0
   songPosition: 0
   songPositionInBeats: 0
   dspSongTime: 0
   notes:
-  - 5
-  - 8
   - 10
-  prefab: {fileID: 3324951503656431599, guid: c40046a83895c834482827dbfd6ccb52, type: 3}
+  - 14
+  - 18.5
+  notePrefab: {fileID: 3324951503656431599, guid: c40046a83895c834482827dbfd6ccb52,
+    type: 3}
   spawnPoint: {fileID: 1166760195}
-  tarjetPoint: {fileID: 627340449}
-  prespawnBeats: 10
+  targetPoint: {fileID: 627340449}
+  prespawnBeats: 4
 --- !u!82 &346127733
 AudioSource:
   m_ObjectHideFlags: 0

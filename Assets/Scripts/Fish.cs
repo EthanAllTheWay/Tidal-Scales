@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
-    Vector3 startPoint;
-    Vector3 endPoint;
-    float beatOfThisNote;
+    private Vector3 startPoint;
+    private Vector3 endPoint;
+    private float beatOfThisNote;
 
     //This sets necesary values.
     public void InitializeValues(Vector3 initialPosition, Vector3 endPosition, float beat)
