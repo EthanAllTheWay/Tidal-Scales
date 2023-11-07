@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -24,18 +25,17 @@ public class Conductor : MonoBehaviour
     //an AudioSource attached to this GameObject that will play the music.
     AudioSource musicSource;
 
+    // They need to contain indicators and spawn points in the following order:
+    // Left, Middle left, Middle right and right
+    public Transform[] spawnPoints;
+    public Transform[] indicatorPoints;
+
     //Notes that will be spawned throughout the song.
-    public float[] notes;
+    public Note[] notes;
 
     public static Conductor instance;
     private int notesIndex = 0;
     public GameObject notePrefab;
-
-    //Point where the notes will spawn
-    public Transform spawnPoint;
-
-    //Point where the indicator is placed.
-    public Transform targetPoint;
 
     //It controls how many beats are before the note's beat target.
     //More prespawn beats means that the note will spawn earlier.
@@ -47,9 +47,7 @@ public class Conductor : MonoBehaviour
         {
             Destroy(gameObject);
         }
-
         instance = this;
-
     }
 
     // Start is called before the first frame update
@@ -70,11 +68,34 @@ public class Conductor : MonoBehaviour
         songPositionInBeats = songPosition / crotchet;
 
         //This checks if it is time to spawn a note
-        if (notesIndex < notes.Length && notes[notesIndex] < songPositionInBeats + prespawnBeats)
+        if (notesIndex < notes.Length && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
         {
-            Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(spawnPoint.position, targetPoint.position, notes[notesIndex]);
+            Note spawnedNote = notes[notesIndex];
+            Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(
+                spawnPoints[(int)spawnedNote.column].position,
+                indicatorPoints[(int)spawnedNote.column].position,
+                spawnedNote.targetBeat);
             //We move to the following note
             notesIndex++;
         }
     }
+
+    // I use this to set the note's column faster in the Inspector
+    [Serializable]
+    public enum Column
+    {
+        Left,
+        MiddleLeft,
+        MiddleRight,
+        Right
+    }
+
+    //Structure containing data about notes that will be spawned
+    [Serializable]
+    public class Note
+    {
+        public float targetBeat;
+        public Column column;
+    }
+
 }
