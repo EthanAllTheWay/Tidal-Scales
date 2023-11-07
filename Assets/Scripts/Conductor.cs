@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,17 +26,11 @@ public class Conductor : MonoBehaviour
     AudioSource musicSource;
 
     //Notes that will be spawned throughout the song.
-    public float[] notes;
+    public Note[] notes;
 
     public static Conductor instance;
     private int notesIndex = 0;
     public GameObject notePrefab;
-
-    //Point where the notes will spawn
-    public Transform spawnPoint;
-
-    //Point where the indicator is placed.
-    public Transform targetPoint;
 
     //It controls how many beats are before the note's beat target.
     //More prespawn beats means that the note will spawn earlier.
@@ -70,11 +65,30 @@ public class Conductor : MonoBehaviour
         songPositionInBeats = songPosition / crotchet;
 
         //This checks if it is time to spawn a note
-        if (notesIndex < notes.Length && notes[notesIndex] < songPositionInBeats + prespawnBeats)
+        if (notesIndex < notes.Length && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
         {
-            Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(spawnPoint.position, targetPoint.position, notes[notesIndex]);
+            Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(notes[notesIndex].spawnPoint.position, notes[notesIndex].targetPoint.position, notes[notesIndex].targetBeat);
             //We move to the following note
             notesIndex++;
         }
     }
+
+    [Serializable]
+    public enum Row
+    {
+        Left,
+        MiddleLeft,
+        MiddleRight,
+        Right
+    }
+
+    [Serializable]
+    public class Note
+    {
+        public float targetBeat;
+        public Transform spawnPoint;
+        public Transform targetPoint;
+        public Row row;
+    }
+
 }
