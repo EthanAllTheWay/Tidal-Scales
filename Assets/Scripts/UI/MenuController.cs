@@ -31,48 +31,6 @@ public class MenuController : MonoBehaviour
         Application.Quit();
     }
 
-    public void StartFunction()
-    {
-        LoadMenu(startMenu, mainMenu);
-    }
-
-    public void SettingsFunction()
-    {
-        LoadMenu(mainMenu, settingsMenu);
-    }
-
-    public void LevelSelectionFunction()
-    {
-        LoadMenu(mainMenu, levelSelectionMenu);
-    }
-
-    public void QuitConfirmationFunction()
-    {
-        LoadMenu(mainMenu, quitConfirmationMenu);
-    }
-
-    public void BackFunction()
-    {
-        if (levelSelectionMenu.activeInHierarchy)
-        {
-            LoadMenu(levelSelectionMenu, mainMenu);
-        }
-        else if (settingsMenu.activeInHierarchy)
-        {
-            LoadMenu(settingsMenu, mainMenu);
-        }
-        else if (quitConfirmationMenu.activeInHierarchy)
-        {
-            LoadMenu(quitConfirmationMenu, mainMenu);
-        }
-    }
-
-    public void LoadMenu(GameObject menuToDeactivate, GameObject menuToActivate)
-    { 
-        menuToDeactivate.SetActive(false);
-        menuToActivate.SetActive(true);
-    }
-
     private void init()
     {
         startMenu.SetActive(true);
