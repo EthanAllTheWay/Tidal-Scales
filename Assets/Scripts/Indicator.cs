@@ -22,6 +22,7 @@ public class Indicator : MonoBehaviour
     //This specify what action is gonna be used by the indicator
     public trigger actionIndex;
     private Fish currentFish = null;
+    private float score;
 
     //A dictionary that I use to find the name of the action specified by the index
     Dictionary<int, string> inputActionDictionary = new Dictionary<int, string>()
@@ -60,6 +61,10 @@ public class Indicator : MonoBehaviour
         {
             Destroy(currentFish.gameObject);
             currentFish = null;
+            score = PlayerPrefs.GetFloat("Score");
+            score += 1;
+            PlayerPrefs.SetFloat("Score", score);
+            Debug.Log("Score: " + score);
         }
     }
 
