@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Fish : MonoBehaviour
 {
+    public float exitDuration;
     private Vector3 startPoint;
     private Vector3 endPoint;
     private float beatOfThisNote;
@@ -28,5 +29,21 @@ public class Fish : MonoBehaviour
             yield return null;
         }
         transform.position = Vector3.Lerp(startPoint, endPoint, 1);
+        StartCoroutine(Escape());
+    }
+    // This continues with the fish move.
+    IEnumerator Escape()
+    {
+        startPoint = transform.position;
+        endPoint += new Vector3(0, 0, 5);
+        float timeElapsed = 0;
+        while (timeElapsed < exitDuration)
+        {
+            transform.position = Vector3.Lerp(startPoint, endPoint, timeElapsed / exitDuration);
+            timeElapsed += Time.deltaTime;
+            yield return null;
+        }
+        transform.position = Vector3.Lerp(startPoint, endPoint, 1);
+        Destroy(gameObject);
     }
 }
