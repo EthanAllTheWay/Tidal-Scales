@@ -65,6 +65,7 @@ public class Indicator : MonoBehaviour
             score += 1;
             PlayerPrefs.SetFloat("Score", score);
             Debug.Log("Score: " + score);
+
         }
     }
 
@@ -73,6 +74,7 @@ public class Indicator : MonoBehaviour
         if (other.gameObject.CompareTag("Fish"))
         {
             currentFish = other.GetComponent<Fish>();
+            
         }
     }
 
