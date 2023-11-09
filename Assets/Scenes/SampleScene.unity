@@ -714,35 +714,7 @@ MonoBehaviour:
   - {fileID: 181925854}
   - {fileID: 627340449}
   - {fileID: 1758207202}
-  notes:
-  - targetBeat: 33.84568
-    column: 0
-  - targetBeat: 35.12905
-    column: 1
-  - targetBeat: 36.61536
-    column: 2
-  - targetBeat: 37.69617
-    column: 3
-  - targetBeat: 39.11483
-    column: 2
-  - targetBeat: 40.73605
-    column: 1
-  - targetBeat: 41.68195
-    column: 0
-  - targetBeat: 43.16825
-    column: 1
-  - targetBeat: 44.65456
-    column: 2
-  - targetBeat: 45.66772
-    column: 3
-  - targetBeat: 47.15403
-    column: 2
-  - targetBeat: 48.7076
-    column: 1
-  - targetBeat: 49.65351
-    column: 0
-  - targetBeat: 51.34237
-    column: 1
+  notes: []
   notePrefab: {fileID: 3324951503656431599, guid: c40046a83895c834482827dbfd6ccb52,
     type: 3}
   prespawnBeats: 4
@@ -869,6 +841,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e734cb37c05bd8946b1e424bbbc0a52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  loadedBeats: []
 --- !u!1 &366790587
 GameObject:
   m_ObjectHideFlags: 0

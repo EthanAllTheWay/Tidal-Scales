@@ -31,7 +31,7 @@ public class Conductor : MonoBehaviour
     public Transform[] indicatorPoints;
 
     //Notes that will be spawned throughout the song.
-    public Note[] notes;
+    public List<Note> notes;
 
     public static Conductor instance;
     private int notesIndex = 0;
@@ -54,10 +54,18 @@ public class Conductor : MonoBehaviour
     void Start()
     {
         // We initialize our variables and play the music.
+
+        foreach (float beat in Mapper.Instance.loadedBeats)
+        {
+            notes.Add(new Note(beat));
+        }
+
         musicSource = GetComponent<AudioSource>();
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
         musicSource.Play();
+
+
     }
 
     // Update is called once per frame
@@ -68,7 +76,7 @@ public class Conductor : MonoBehaviour
         songPositionInBeats = songPosition / crotchet;
 
         //This checks if it is time to spawn a note
-        if (notesIndex < notes.Length && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
+        if (notesIndex < notes.Count && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
         {
             Note spawnedNote = notes[notesIndex];
             Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(
@@ -94,6 +102,11 @@ public class Conductor : MonoBehaviour
     [Serializable]
     public class Note
     {
+        public Note(float beat)
+        {
+            targetBeat = beat;
+        }
+
         public float targetBeat;
         public Column column;
     }

@@ -5,14 +5,20 @@ using UnityEngine;
 
 public class Mapper : MonoBehaviour
 {
+    public static Mapper Instance;
     string fileLocation;
     string data = "";
+    public List<float> loadedBeats = new List<float>();
 
     int i = 0;
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
+        if (Instance == null)
+            Instance = this;
+
         fileLocation = Application.dataPath + "/noteBeats";
+        Read();
     }
 
     // Update is called once per frame
@@ -22,7 +28,7 @@ public class Mapper : MonoBehaviour
         {
             Debug.Log(i + " : " + Conductor.instance.songPositionInBeats);
             data += Conductor.instance.songPositionInBeats.ToString() + "\n";
-            Write(data);
+            // Write(data);
             i++;
         }
     }
@@ -30,6 +36,17 @@ public class Mapper : MonoBehaviour
     public void Write(string s)
     {
         File.WriteAllText(fileLocation, s);
+    }
+
+    public void Read()
+    {
+        string[] lines = File.ReadAllLines(fileLocation);
+        Debug.Log(lines.Length);
+        foreach (string line in lines)
+        {
+            loadedBeats.Add(float.Parse(line));
+//            Debug.Log((float.Parse(line)));
+        }
     }
 
 }
