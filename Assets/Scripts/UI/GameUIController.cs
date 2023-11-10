@@ -30,23 +30,28 @@ public class GameUIController : MonoBehaviour
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
-        { 
-            pausePanel.SetActive(!pausePanel.activeInHierarchy);
-            
-            if (pausePanel.activeInHierarchy)
-            {
-                // pause game and music.
-                Time.timeScale = 0;
-                gamePaused = true;
-                Conductor.instance.GetMusicSource().Stop();
-            }
-            else 
-            {
-                Time.timeScale = 1;
-                gamePaused = false;
-                Conductor.instance.GetMusicSource().Play();
-                Conductor.instance.dspTimeOffset = (float)AudioSettings.dspTime - Conductor.instance.dspSongTime - Conductor.instance.songPosition;
-            }
+        {
+            pauseGame();
+        }
+    }
+
+    public void pauseGame()
+    {
+        pausePanel.SetActive(!pausePanel.activeInHierarchy);
+
+        if (pausePanel.activeInHierarchy)
+        {
+            // pause game and music.
+            Time.timeScale = 0;
+            gamePaused = true;
+            Conductor.instance.GetMusicSource().Pause();
+        }
+        else
+        {
+            Time.timeScale = 1;
+            gamePaused = false;
+            Conductor.instance.GetMusicSource().Play();
+            Conductor.instance.dspTimeOffset = (float)AudioSettings.dspTime - Conductor.instance.dspSongTime - Conductor.instance.songPosition;
         }
     }
 }
