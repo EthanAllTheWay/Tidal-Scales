@@ -24,6 +24,11 @@ public class Fish : MonoBehaviour
         float interpolationVariable = Conductor.instance.prespawnBeats - (beatOfThisNote - Conductor.instance.songPositionInBeats);
         while (interpolationVariable < Conductor.instance.prespawnBeats)
         {
+            // TODO: Change this. Currently used to pause the Coroutine from moving the object.
+            while (GameUIController.gamePaused)
+            {
+                yield return null;
+            }
             transform.position = Vector3.Lerp(startPoint, endPoint, interpolationVariable / Conductor.instance.prespawnBeats);
             interpolationVariable = Conductor.instance.prespawnBeats - (beatOfThisNote - Conductor.instance.songPositionInBeats);
             yield return null;

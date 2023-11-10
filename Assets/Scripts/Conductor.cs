@@ -60,11 +60,13 @@ public class Conductor : MonoBehaviour
         musicSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
+        Debug.Log("FixedUpdate method called.");
+
         // We update our variables
         songPosition = (float)AudioSettings.dspTime - dspSongTime;
+        Debug.Log("songPosition: " +  songPosition + "  dspTime: " + (float)AudioSettings.dspTime + "  dspSongTime: " + dspSongTime);
         songPositionInBeats = songPosition / crotchet;
 
         //This checks if it is time to spawn a note
@@ -96,6 +98,20 @@ public class Conductor : MonoBehaviour
     {
         public float targetBeat;
         public Column column;
+    }
+
+    public AudioSource GetMusicSource()
+    { 
+        return musicSource;
+    }
+
+    // This variable is used to offset the AudioSettings.dspTime variable when the game pauses.
+    public float dspTimeOffset = 0f;
+
+    public float GetDspTime()
+    {
+
+        return songPosition - (songPosition - dspTimeOffset);
     }
 
 }

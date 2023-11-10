@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class GameUIController : MonoBehaviour
 {
 
@@ -11,6 +12,8 @@ public class GameUIController : MonoBehaviour
 
     [SerializeField]
     private GameObject gamePanel;
+
+    public static bool gamePaused = false;
 
     // Start is called before the first frame update
     void Start()
@@ -29,6 +32,21 @@ public class GameUIController : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Escape))
         { 
             pausePanel.SetActive(!pausePanel.activeInHierarchy);
+            
+            if (pausePanel.activeInHierarchy)
+            {
+                // pause game and music.
+                Time.timeScale = 0;
+                gamePaused = true;
+                Conductor.instance.GetMusicSource().Stop();
+            }
+            else 
+            {
+                Time.timeScale = 1;
+                gamePaused = false;
+                Conductor.instance.GetMusicSource().Play();
+                Conductor.instance.dspTimeOffset += (float)AudioSettings.dspTime - Conductor.instance.dspTimeOffset;
+            }
         }
     }
 }
