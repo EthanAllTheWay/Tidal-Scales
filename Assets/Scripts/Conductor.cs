@@ -22,6 +22,9 @@ public class Conductor : MonoBehaviour
     //How many seconds have passed since the song started
     public float dspSongTime;
 
+    // This variable is used to offset the AudioSettings.dspTime variable when the game pauses.
+    public float dspTimeOffset = 0f;
+
     //an AudioSource attached to this GameObject that will play the music.
     AudioSource musicSource;
 
@@ -65,8 +68,8 @@ public class Conductor : MonoBehaviour
         Debug.Log("FixedUpdate method called.");
 
         // We update our variables
-        songPosition = (float)AudioSettings.dspTime - dspSongTime;
-        Debug.Log("songPosition: " +  songPosition + "  dspTime: " + (float)AudioSettings.dspTime + "  dspSongTime: " + dspSongTime);
+        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
+        Debug.Log("songPosition: " +  songPosition + "  dspTime: " + (float)AudioSettings.dspTime + "  dspSongTime: " + dspSongTime + " offset: " + dspTimeOffset);
         songPositionInBeats = songPosition / crotchet;
 
         //This checks if it is time to spawn a note
@@ -105,8 +108,7 @@ public class Conductor : MonoBehaviour
         return musicSource;
     }
 
-    // This variable is used to offset the AudioSettings.dspTime variable when the game pauses.
-    public float dspTimeOffset = 0f;
+ 
 
     public float GetDspTime()
     {

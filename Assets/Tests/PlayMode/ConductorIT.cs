@@ -77,7 +77,7 @@ public class ConductorIT
 
     /// <summary>
     /// This is a big no to try to assign a parameter in a method. The offset variable will not 
-    /// be updated outside this class. Learned this the hard way.
+    /// be updated outside this method. Learned this the hard way.
     /// https://stackoverflow.com/a/555481 
     /// </summary>
     /// <param name="offset"></param>

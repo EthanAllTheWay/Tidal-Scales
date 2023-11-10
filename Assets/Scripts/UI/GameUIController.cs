@@ -45,7 +45,7 @@ public class GameUIController : MonoBehaviour
                 Time.timeScale = 1;
                 gamePaused = false;
                 Conductor.instance.GetMusicSource().Play();
-                Conductor.instance.dspTimeOffset += (float)AudioSettings.dspTime - Conductor.instance.dspTimeOffset;
+                Conductor.instance.dspTimeOffset = (float)AudioSettings.dspTime - Conductor.instance.dspSongTime - Conductor.instance.songPosition;
             }
         }
     }
