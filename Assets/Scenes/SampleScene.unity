@@ -717,7 +717,7 @@ MonoBehaviour:
   notes: []
   notePrefab: {fileID: 3324951503656431599, guid: c40046a83895c834482827dbfd6ccb52,
     type: 3}
-  prespawnBeats: 4
+  prespawnBeats: 12
 --- !u!82 &346127733
 AudioSource:
   m_ObjectHideFlags: 0

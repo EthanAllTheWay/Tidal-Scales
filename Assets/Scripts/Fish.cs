@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 
 public class Fish : MonoBehaviour
@@ -8,13 +9,15 @@ public class Fish : MonoBehaviour
     private Vector3 startPoint;
     private Vector3 endPoint;
     private float beatOfThisNote;
+    public TextMeshProUGUI textMeshPro;
 
     //This sets necesary values.
-    public void InitializeValues(Vector3 initialPosition, Vector3 endPosition, float beat)
+    public void InitializeValues(Vector3 initialPosition, Vector3 endPosition, float beat, int n)
     {
         startPoint = initialPosition;
         endPoint = endPosition;
         beatOfThisNote = beat;
+        textMeshPro.text = n.ToString();
         StartCoroutine(Move());
     }
 

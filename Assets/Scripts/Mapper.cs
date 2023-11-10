@@ -17,7 +17,7 @@ public class Mapper : MonoBehaviour
         if (Instance == null)
             Instance = this;
 
-        fileLocation = Application.dataPath + "/noteBeats";
+        fileLocation = Application.dataPath + "/noteBeats.txt";
         Read();
     }
 
