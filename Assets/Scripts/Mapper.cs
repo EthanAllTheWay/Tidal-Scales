@@ -3,61 +3,56 @@ using System.Collections.Generic;
 using System.IO;
 using UnityEngine;
 
-//This is class used to map time in beats in a file by pressing SPACE during play mode.
+//This is class used to map the time in beats in a file by pressing SPACE during play mode.
 //It should not be part of the final release.
 public class Mapper : MonoBehaviour
 {
-    public static Mapper Instance;
-    string beatsFileLocation;
-    string noteNumbersFileLocation;
-    string data = "";
-    public List<float> loadedBeats = new List<float>();
-    public List<int> loadedNoteNumbers = new List<int>();
+    // output file that will contain the beats mapped by pressing SPACE during play mode
+    public string outBeatsFileLocation;
+    // The file that contains the original note numbers from MIDI keys.
+    public string rawNoteColumnPositionFileLocation;
+    // The output file that will contain the column position for our game.
+    public string outRemapedNotesColumnPositionFileLocation;
 
+    string beatsData = "";
     int i = 0;
+
     // Start is called before the first frame update
     void Awake()
     {
-        if (Instance == null)
-            Instance = this;
-
-        beatsFileLocation = Application.dataPath + "/noteBeats.txt";
-        noteNumbersFileLocation = Application.dataPath + "/notesNumbers.txt";
-        Read();
-        RemapNoteNumber();
+        //Uncomment this line if you want to remap the notes position
+        //from MIDI keys to the game columns indicators position
+        //RemapNotesColumnPosition();
     }
 
     // Update is called once per frame
     void Update()
     {
+        // Sampling beats
         if (Input.GetKeyDown(KeyCode.Space))
         {
             Debug.Log(i + " : " + Conductor.instance.songPositionInBeats);
+            i++;
+            beatsData += Conductor.instance.songPositionInBeats + "\n";
+
+            // Uncomment this line if you want to generate a file with the sampled beats
+            // WriteFile(Application.dataPath + outBeatsFileLocation, beatsData);
         }
     }
 
-    public void Write(string s)
+    void RemapNotesColumnPosition()
     {
-        File.WriteAllText(beatsFileLocation, s);
-    }
-
-    public void Read()
-    {
-        string[] lines = File.ReadAllLines(beatsFileLocation);
-        foreach (string line in lines)
-        {
-            loadedBeats.Add(float.Parse(line));
-        }
-        lines = File.ReadAllLines(noteNumbersFileLocation);
+        // We read the file's content
+        string[] lines = File.ReadAllLines(rawNoteColumnPositionFileLocation);
+        List<int> loadedNoteNumbers = new List<int>();
 
         foreach (string line in lines)
         {
             loadedNoteNumbers.Add(int.Parse(line));
         }
-    }
 
-    void RemapNoteNumber()
-    {
+        // We only use 4 columns in the game from 0 to 3;
+        // To illustrate: Values from 50 to 60 refers to the note number in a MIDI keyboard
         for (int i = 0; i < loadedNoteNumbers.Count; i++)
         {
             if (loadedNoteNumbers[i] < 60)
@@ -69,6 +64,17 @@ public class Mapper : MonoBehaviour
             else
                 loadedNoteNumbers[i] = 3;
         }
+
+        WriteFile(Application.dataPath + outRemapedNotesColumnPositionFileLocation, lines);
     }
 
+    void WriteFile(string path, string content)
+    {
+        File.WriteAllText(path, content);
+    }
+
+    void WriteFile(string path, string[] textInLines)
+    {
+        File.WriteAllLines(path, textInLines);
+    }
 }

@@ -2,10 +2,20 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
 
 [RequireComponent(typeof(AudioSource))]
 public class Conductor : MonoBehaviour
 {
+    public static Conductor instance;
+
+    [Header("Files location")]
+    public string notesPositionFileLocation;
+    public string notesBeatsFileLocation;
+    private List<int> notesColumnPosition = new List<int>();
+    private List<float> notesBeats = new List<float>();
+
+    [Header("Conductor's control variables")]
     //Song beats per minute
     public float songBpm;
 
@@ -21,25 +31,27 @@ public class Conductor : MonoBehaviour
 
     //How many seconds have passed since the song started
     public float dspSongTime;
-
-    //an AudioSource attached to this GameObject that will play the music.
-    AudioSource musicSource;
-
-    // They need to contain indicators and spawn points in the following order:
-    // Left, Middle left, Middle right and right
-    public Transform[] spawnPoints;
-    public Transform[] indicatorPoints;
-
-    //Notes that will be spawned throughout the song.
-    public List<Note> notes;
-
-    public static Conductor instance;
-    private int notesIndex = 0;
-    public GameObject notePrefab;
-
     //It controls how many beats are before the note's beat target.
     //More prespawn beats means that the note will spawn earlier.
     public float prespawnBeats;
+
+    [Header("Audio components")]
+    //an AudioSource attached to this GameObject that will play the music.
+    AudioSource musicSource;
+
+    [Header("Notes elements")]
+    // They need to contain indicators and spawn points in the following order:
+    // Left, Middle left, Middle right and right
+    public GameObject notePrefab;
+    public Transform[] spawnPoints;
+    public Transform[] indicatorPoints;
+
+    // Make private after debugging.
+    [Header("Notes spawned during the level")]
+    //Notes that will be spawned throughout the song.
+    public List<Note> notes;
+
+    private int notesIndex = 0;
 
     private void Awake()
     {
@@ -54,21 +66,11 @@ public class Conductor : MonoBehaviour
     void Start()
     {
         // We initialize our variables and play the music.
-
-        for (int i = 0; i < Mapper.Instance.loadedNoteNumbers.Count; i++)
-        {
-            float beat = Mapper.Instance.loadedBeats[i];
-            int number = Mapper.Instance.loadedNoteNumbers[i];
-            notes.Add(new Note(beat,number));
-
-        }
-
+        LoadNotesData();
         musicSource = GetComponent<AudioSource>();
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
         musicSource.Play();
-
-
     }
 
     // Update is called once per frame
@@ -83,11 +85,36 @@ public class Conductor : MonoBehaviour
         {
             Note spawnedNote = notes[notesIndex];
             Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(
-                spawnPoints[(int)spawnedNote.column].position,
-                indicatorPoints[(int)spawnedNote.column].position,
+                spawnPoints[spawnedNote.column].position,
+                indicatorPoints[spawnedNote.column].position,
                 spawnedNote.targetBeat, notesIndex + 1);
             //We move to the following note
             notesIndex++;
+        }
+    }
+
+    // Read data from files.
+    private void LoadNotesData()
+    {
+        // We read values from the files.
+        string[] lines = File.ReadAllLines(Application.dataPath + notesBeatsFileLocation);
+        foreach (string line in lines)
+        {
+            notesBeats.Add(float.Parse(line));
+        }
+
+        lines = File.ReadAllLines(Application.dataPath + notesPositionFileLocation);
+        foreach (string line in lines)
+        {
+            notesColumnPosition.Add(int.Parse(line));
+        }
+
+        // We create our notes and set the values.
+        for (int i = 0; i < notesBeats.Count; i++)
+        {
+            float beat = notesBeats[i];
+            int number = notesColumnPosition[i];
+            notes.Add(new Note(beat, number));
         }
     }
 
