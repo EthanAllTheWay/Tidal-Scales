@@ -55,9 +55,12 @@ public class Conductor : MonoBehaviour
     {
         // We initialize our variables and play the music.
 
-        foreach (float beat in Mapper.Instance.loadedBeats)
+        for (int i = 0; i < Mapper.Instance.loadedNoteNumbers.Count; i++)
         {
-            notes.Add(new Note(beat));
+            float beat = Mapper.Instance.loadedBeats[i];
+            int number = Mapper.Instance.loadedNoteNumbers[i];
+            notes.Add(new Note(beat,number));
+
         }
 
         musicSource = GetComponent<AudioSource>();
@@ -82,33 +85,24 @@ public class Conductor : MonoBehaviour
             Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(
                 spawnPoints[(int)spawnedNote.column].position,
                 indicatorPoints[(int)spawnedNote.column].position,
-                spawnedNote.targetBeat, notesIndex+1);
+                spawnedNote.targetBeat, notesIndex + 1);
             //We move to the following note
             notesIndex++;
         }
-    }
-
-    // I use this to set the note's column faster in the Inspector
-    [Serializable]
-    public enum Column
-    {
-        Left,
-        MiddleLeft,
-        MiddleRight,
-        Right
     }
 
     //Structure containing data about notes that will be spawned
     [Serializable]
     public class Note
     {
-        public Note(float beat)
+        public Note(float beat, int n)
         {
             targetBeat = beat;
+            column = n;
         }
 
         public float targetBeat;
-        public Column column;
+        public int column;
     }
 
 }
