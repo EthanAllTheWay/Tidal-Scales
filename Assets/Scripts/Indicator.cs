@@ -22,7 +22,8 @@ public class Indicator : MonoBehaviour
     //This specify what action is gonna be used by the indicator
     public trigger actionIndex;
     private Fish currentFish = null;
-    private float score;
+    //This is to call score system
+    private Score score;
 
     //A dictionary that I use to find the name of the action specified by the index
     Dictionary<int, string> inputActionDictionary = new Dictionary<int, string>()
@@ -41,6 +42,11 @@ public class Indicator : MonoBehaviour
 
         // We specify what method will be invoked at what time (performed in this case)
         triggerAction.performed += ctx => Capture();
+    }
+    private void Start()
+    {
+        //Searching score system
+        score = GameObject.FindGameObjectWithTag("Fisherman").GetComponent <Score>();
     }
 
     // Input system needs enable and disable the action in order to work.
@@ -61,11 +67,7 @@ public class Indicator : MonoBehaviour
         {
             Destroy(currentFish.gameObject);
             currentFish = null;
-            score = PlayerPrefs.GetFloat("Score");
-            score += 1;
-            PlayerPrefs.SetFloat("Score", score);
-            Debug.Log("Score: " + score);
-
+            score.addScore(); // Calls score system to work
         }
     }
 
@@ -83,6 +85,8 @@ public class Indicator : MonoBehaviour
         if (other.gameObject.CompareTag("Fish"))
         {
             currentFish = null;
+            score.multiplier = 1;
         }
     }
+
 }

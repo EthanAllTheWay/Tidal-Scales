@@ -50,3 +50,4 @@ public class Fish : MonoBehaviour
         Destroy(gameObject);
     }
 }
+// Diferencia entre conductor y pez,para empezar 
