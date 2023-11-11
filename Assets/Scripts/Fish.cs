@@ -8,7 +8,7 @@ public class Fish : MonoBehaviour
     public float exitDuration;
     private Vector3 startPoint;
     private Vector3 endPoint;
-    private float beatOfThisNote;
+    public float beatOfThisNote;
     public TextMeshProUGUI textMeshPro;
 
     //This sets necesary values.

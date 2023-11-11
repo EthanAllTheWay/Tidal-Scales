@@ -24,6 +24,7 @@ public class Indicator : MonoBehaviour
     private Fish currentFish = null;
     //This is to call score system
     private Score score;
+    
 
     //A dictionary that I use to find the name of the action specified by the index
     Dictionary<int, string> inputActionDictionary = new Dictionary<int, string>()
@@ -42,10 +43,12 @@ public class Indicator : MonoBehaviour
 
         // We specify what method will be invoked at what time (performed in this case)
         triggerAction.performed += ctx => Capture();
+         
+
     }
     private void Start()
     {
-        //Searching score system
+        //We search score system
         score = GameObject.FindGameObjectWithTag("Fisherman").GetComponent <Score>();
     }
 
@@ -67,7 +70,10 @@ public class Indicator : MonoBehaviour
         {
             Destroy(currentFish.gameObject);
             currentFish = null;
-            score.addScore(); // Calls score system to work
+            score.addScore(); // Calls score system to work            
+        }
+        else {
+            score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
         }
     }
 
