@@ -40,7 +40,14 @@ public class Indicator : MonoBehaviour
         triggerAction = gameplayActionMap.FindAction(inputActionDictionary[(int)actionIndex]);
 
         // We specify what method will be invoked at what time (performed in this case)
-        triggerAction.performed += ctx => Capture();
+        triggerAction.performed += ctx => {
+            // Return if the game is paused. The prevents players from pausing the game to get points.
+            if (GameUIController.gamePaused)
+            {
+                return;
+            }
+            Capture();
+            };
     }
 
     // Input system needs enable and disable the action in order to work.

@@ -10,9 +10,6 @@ public class GameUIController : MonoBehaviour
     [SerializeField]
     private GameObject pausePanel;
 
-    [SerializeField]
-    private GameObject gamePanel;
-
     public static bool gamePaused = false;
 
     // Start is called before the first frame update
