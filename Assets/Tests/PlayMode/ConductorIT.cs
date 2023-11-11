@@ -29,8 +29,8 @@ public class ConductorIT
 
     {
         /*
-         * I am not dealing with assembly definitions right now. I am getting an error when I create a new assembly definition 
-         * in the scripts class. Here is the error:
+         * TODO: Fix this since I am not dealing with assembly definitions right now. I am getting an error when 
+         * I create a new assembly definition in the scripts class. Here is the error:
          * Assets\Scripts\Indicator.cs(21,5): error CS0246: The type or namespace name 'InputAction' could 
          * not be found (are you missing a using directive or an assembly reference?)
          */
