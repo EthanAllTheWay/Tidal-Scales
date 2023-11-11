@@ -106,12 +106,4 @@ public class Conductor : MonoBehaviour
         return musicSource;
     }
 
- 
-
-    public float GetDspTime()
-    {
-
-        return songPosition - (songPosition - dspTimeOffset);
-    }
-
 }
