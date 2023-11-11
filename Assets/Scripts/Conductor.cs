@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.IO;
+using System.Linq;
 
 [RequireComponent(typeof(AudioSource))]
 public class Conductor : MonoBehaviour
@@ -10,10 +11,7 @@ public class Conductor : MonoBehaviour
     public static Conductor instance;
 
     [Header("Files location")]
-    public string notesPositionFileLocation;
-    public string notesBeatsFileLocation;
-    private List<int> notesColumnPosition = new List<int>();
-    private List<float> notesBeats = new List<float>();
+    public string notesDataFile;
 
     [Header("Conductor's control variables")]
     //Song beats per minute
@@ -93,28 +91,20 @@ public class Conductor : MonoBehaviour
         }
     }
 
-    // Read data from files.
+    // Read data from file.
     private void LoadNotesData()
     {
-        // We read values from the files.
-        string[] lines = File.ReadAllLines(Application.dataPath + notesBeatsFileLocation);
+        string[] lines = File.ReadAllLines(Application.dataPath + "/" + notesDataFile);
+        float beat;
+        int pos;
+
+        List<string> LineElementsList;
         foreach (string line in lines)
         {
-            notesBeats.Add(float.Parse(line));
-        }
-
-        lines = File.ReadAllLines(Application.dataPath + notesPositionFileLocation);
-        foreach (string line in lines)
-        {
-            notesColumnPosition.Add(int.Parse(line));
-        }
-
-        // We create our notes and set the values.
-        for (int i = 0; i < notesBeats.Count; i++)
-        {
-            float beat = notesBeats[i];
-            int number = notesColumnPosition[i];
-            notes.Add(new Note(beat, number));
+            LineElementsList = line.Split(',').ToList();
+            beat = float.Parse(LineElementsList[0]);
+            pos = int.Parse(LineElementsList[1]);
+            notes.Add(new Note(beat, pos));
         }
     }
 
@@ -131,5 +121,4 @@ public class Conductor : MonoBehaviour
         public float targetBeat;
         public int column;
     }
-
 }

@@ -9,6 +9,7 @@ public class Mapper : MonoBehaviour
 {
     // output file that will contain the beats mapped by pressing SPACE during play mode
     public string outBeatsFileLocation;
+    public string outNotesDataFile;
     // The file that contains the original note numbers from MIDI keys.
     public string rawNoteColumnPositionFileLocation;
     // The output file that will contain the column position for our game.
@@ -23,6 +24,9 @@ public class Mapper : MonoBehaviour
         //Uncomment this line if you want to remap the notes position
         //from MIDI keys to the game columns indicators position
         //RemapNotesColumnPosition();
+
+        //Uncomment this line when you want to combine previous generated files
+        //CombineFiles();
     }
 
     // Update is called once per frame
@@ -40,10 +44,37 @@ public class Mapper : MonoBehaviour
         }
     }
 
+    //Combines the beatsFile and the columnPositionFile.
+    void CombineFiles()
+    {
+        string[] lines = File.ReadAllLines(Application.dataPath + "/" + outBeatsFileLocation);
+        List<float> beats = new List<float>();
+        List<int> pos = new List<int>();
+
+        foreach (string line in lines)
+        {
+            beats.Add(float.Parse(line));
+        }
+
+        lines = File.ReadAllLines(Application.dataPath + "/" + outRemapedNotesColumnPositionFileLocation);
+        foreach (string line in lines)
+        {
+            pos.Add(int.Parse(line));
+        }
+
+        lines = new string[beats.Count];
+        for (int index = 0; index < beats.Count; index++)
+        {
+            lines[index] = beats[index] + "," + pos[index];
+        }
+
+        File.WriteAllLines(Application.dataPath + "/" + outNotesDataFile, lines);
+    }
+
     void RemapNotesColumnPosition()
     {
         // We read the file's content
-        string[] lines = File.ReadAllLines(rawNoteColumnPositionFileLocation);
+        string[] lines = File.ReadAllLines(Application.dataPath + "/" + rawNoteColumnPositionFileLocation);
         List<int> loadedNoteNumbers = new List<int>();
 
         foreach (string line in lines)
