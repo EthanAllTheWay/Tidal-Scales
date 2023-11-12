@@ -68,9 +68,9 @@ public class Indicator : MonoBehaviour
     {
         if (currentFish != null)
         {
+            score.addScore(currentFish.beatOfThisNote); // Calls score system to work
             Destroy(currentFish.gameObject);
-            currentFish = null;
-            score.addScore(); // Calls score system to work            
+            currentFish = null;                        
         }
         else {
             score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
