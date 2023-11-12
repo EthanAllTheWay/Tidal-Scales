@@ -40,7 +40,7 @@ public class Indicator : MonoBehaviour
         triggerAction = gameplayActionMap.FindAction(inputActionDictionary[(int)actionIndex]);
 
         // We specify what method will be invoked at what time (performed in this case)
-        triggerAction.performed += ctx => Capture();
+        triggerAction.performed += ctx =>  Capture();
     }
 
     // Input system needs enable and disable the action in order to work.
@@ -57,6 +57,11 @@ public class Indicator : MonoBehaviour
     // Destroys the fish that is inside the indicator
     private void Capture()
     {
+        // Return if the game is paused. The prevents players from pausing the game to get points.
+        if (GameUIController.gamePaused)
+        {
+            return;
+        }
         if (currentFish != null)
         {
             Destroy(currentFish.gameObject);

@@ -33,6 +33,9 @@ public class Conductor : MonoBehaviour
     //More prespawn beats means that the note will spawn earlier.
     public float prespawnBeats;
 
+    // This variable is used to offset the AudioSettings.dspTime variable when the game pauses.
+    public float dspTimeOffset = 0f;
+
     [Header("Audio components")]
     //an AudioSource attached to this GameObject that will play the music.
     AudioSource musicSource;
@@ -71,11 +74,10 @@ public class Conductor : MonoBehaviour
         musicSource.Play();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void FixedUpdate()
     {
         // We update our variables
-        songPosition = (float)AudioSettings.dspTime - dspSongTime;
+        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
         songPositionInBeats = songPosition / crotchet;
 
         //This checks if it is time to spawn a note
@@ -120,5 +122,10 @@ public class Conductor : MonoBehaviour
 
         public float targetBeat;
         public int column;
+    }
+
+    public AudioSource GetMusicSource()
+    { 
+        return musicSource;
     }
 }
