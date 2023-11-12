@@ -74,11 +74,18 @@ public class Conductor : MonoBehaviour
         musicSource.Play();
     }
 
+    private void OnDestroy()
+    {
+        notes.Clear();
+    }
+
     private void FixedUpdate()
     {
         // We update our variables
         songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
         songPositionInBeats = songPosition / crotchet;
+        Debug.Log("Song Position: " + songPosition + " In beats: " + songPositionInBeats);
+
 
         //This checks if it is time to spawn a note
         if (notesIndex < notes.Count && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
