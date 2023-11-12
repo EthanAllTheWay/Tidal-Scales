@@ -73,7 +73,7 @@ public class Conductor : MonoBehaviour
         dspSongTime = (float)AudioSettings.dspTime;
 
         // TODO: Change this back to 0. This variable is used to start the level at a certain point.
-        SetStartTime(45);
+        SetStartTime(55); // 45
         musicSource.Play();
     }
 
