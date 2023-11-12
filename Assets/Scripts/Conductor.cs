@@ -67,7 +67,6 @@ public class Conductor : MonoBehaviour
     {
         // We update our variables
         songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
-        //Debug.Log("songPosition: " +  songPosition + "  dspTime: " + (float)AudioSettings.dspTime + "  dspSongTime: " + dspSongTime + " offset: " + dspTimeOffset);
         songPositionInBeats = songPosition / crotchet;
 
         //This checks if it is time to spawn a note

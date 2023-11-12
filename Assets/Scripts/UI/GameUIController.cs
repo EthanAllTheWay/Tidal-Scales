@@ -2,18 +2,22 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 
 public class GameUIController : MonoBehaviour
 {
+    [SerializeField]
+    private InputActionAsset primaryInputs;
+    private InputActionMap InputActionMap;
+    private InputAction pauseInputAction;
 
     [SerializeField]
     private GameObject pausePanel;
-
     public static bool gamePaused = false;
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         init();
     }
@@ -21,16 +25,23 @@ public class GameUIController : MonoBehaviour
     private void init()
     {
         pausePanel.SetActive(false);
+
+        InputActionMap = primaryInputs.FindActionMap("Gameplay");
+        pauseInputAction = InputActionMap.FindAction("Pause");
+        pauseInputAction.performed += context => pauseGame();
     }
 
-    // Update is called once per frame
-    void Update()
+    //  The OnEnable and OnDisable methods are reqired for the InputActionAsset to work.
+    private void OnEnable()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            pauseGame();
-        }
+        primaryInputs.Enable();
     }
+
+    private void OnDisable()
+    {
+        primaryInputs.Disable();
+    }
+
 
     public void pauseGame()
     {
@@ -38,13 +49,14 @@ public class GameUIController : MonoBehaviour
 
         if (pausePanel.activeInHierarchy)
         {
-            // pause game and music.
+            // Pause game and music.
             Time.timeScale = 0;
             gamePaused = true;
             Conductor.instance.GetMusicSource().Pause();
         }
         else
         {
+            // Unpause game and music.
             Time.timeScale = 1;
             gamePaused = false;
             Conductor.instance.GetMusicSource().Play();
