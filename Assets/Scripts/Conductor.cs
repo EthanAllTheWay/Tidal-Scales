@@ -2,10 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.IO;
+using System.Linq;
 
 [RequireComponent(typeof(AudioSource))]
 public class Conductor : MonoBehaviour
 {
+    public static Conductor instance;
+
+    [Header("Files location")]
+    public string notesDataFile;
+
+    [Header("Conductor's control variables")]
     //Song beats per minute
     public float songBpm;
 
@@ -21,28 +29,30 @@ public class Conductor : MonoBehaviour
 
     //How many seconds have passed since the song started
     public float dspSongTime;
+    //It controls how many beats are before the note's beat target.
+    //More prespawn beats means that the note will spawn earlier.
+    public float prespawnBeats;
 
     // This variable is used to offset the AudioSettings.dspTime variable when the game pauses.
     public float dspTimeOffset = 0f;
 
+    [Header("Audio components")]
     //an AudioSource attached to this GameObject that will play the music.
     AudioSource musicSource;
 
+    [Header("Notes elements")]
     // They need to contain indicators and spawn points in the following order:
     // Left, Middle left, Middle right and right
+    public GameObject notePrefab;
     public Transform[] spawnPoints;
     public Transform[] indicatorPoints;
 
+    // Make private after debugging.
+    [Header("Notes spawned during the level")]
     //Notes that will be spawned throughout the song.
-    public Note[] notes;
+    public List<Note> notes;
 
-    public static Conductor instance;
     private int notesIndex = 0;
-    public GameObject notePrefab;
-
-    //It controls how many beats are before the note's beat target.
-    //More prespawn beats means that the note will spawn earlier.
-    public float prespawnBeats;
 
     private void Awake()
     {
@@ -57,6 +67,7 @@ public class Conductor : MonoBehaviour
     void Start()
     {
         // We initialize our variables and play the music.
+        LoadNotesData();
         musicSource = GetComponent<AudioSource>();
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
@@ -70,39 +81,51 @@ public class Conductor : MonoBehaviour
         songPositionInBeats = songPosition / crotchet;
 
         //This checks if it is time to spawn a note
-        if (notesIndex < notes.Length && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
+        if (notesIndex < notes.Count && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
         {
             Note spawnedNote = notes[notesIndex];
             Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(
-                spawnPoints[(int)spawnedNote.column].position,
-                indicatorPoints[(int)spawnedNote.column].position,
-                spawnedNote.targetBeat);
+                spawnPoints[spawnedNote.column].position,
+                indicatorPoints[spawnedNote.column].position,
+                spawnedNote.targetBeat, notesIndex + 1);
             //We move to the following note
             notesIndex++;
         }
     }
 
-    // I use this to set the note's column faster in the Inspector
-    [Serializable]
-    public enum Column
+    // Read data from file.
+    private void LoadNotesData()
     {
-        Left,
-        MiddleLeft,
-        MiddleRight,
-        Right
+        string[] lines = File.ReadAllLines(Application.dataPath + "/" + notesDataFile);
+        float beat;
+        int pos;
+
+        List<string> LineElementsList;
+        foreach (string line in lines)
+        {
+            LineElementsList = line.Split(',').ToList();
+            beat = float.Parse(LineElementsList[0]);
+            pos = int.Parse(LineElementsList[1]);
+            notes.Add(new Note(beat, pos));
+        }
     }
 
     //Structure containing data about notes that will be spawned
     [Serializable]
     public class Note
     {
+        public Note(float beat, int n)
+        {
+            targetBeat = beat;
+            column = n;
+        }
+
         public float targetBeat;
-        public Column column;
+        public int column;
     }
 
     public AudioSource GetMusicSource()
     { 
         return musicSource;
     }
-
 }

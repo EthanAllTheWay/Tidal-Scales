@@ -679,7 +679,6 @@ GameObject:
   - component: {fileID: 346127734}
   - component: {fileID: 346127733}
   - component: {fileID: 346127732}
-  - component: {fileID: 346127735}
   m_Layer: 0
   m_Name: Conductor
   m_TagString: Untagged
@@ -699,12 +698,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd508286c448c3428f3e57ed9c2684c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notesDataFile: Scenes/Level_1/notesData.txt
   songBpm: 190
   crotchet: 0
   songPosition: 0
   songPositionInBeats: 0
   dspSongTime: 0
   dspTimeOffset: 0
+  prespawnBeats: 12
+  notePrefab: {fileID: 3324951503656431599, guid: c40046a83895c834482827dbfd6ccb52,
+    type: 3}
   spawnPoints:
   - {fileID: 1749849594}
   - {fileID: 1074024379}
@@ -715,38 +718,7 @@ MonoBehaviour:
   - {fileID: 181925854}
   - {fileID: 627340449}
   - {fileID: 1758207202}
-  notes:
-  - targetBeat: 33.84568
-    column: 0
-  - targetBeat: 35.12905
-    column: 1
-  - targetBeat: 36.61536
-    column: 2
-  - targetBeat: 37.69617
-    column: 3
-  - targetBeat: 39.11483
-    column: 2
-  - targetBeat: 40.73605
-    column: 1
-  - targetBeat: 41.68195
-    column: 0
-  - targetBeat: 43.16825
-    column: 1
-  - targetBeat: 44.65456
-    column: 2
-  - targetBeat: 45.66772
-    column: 3
-  - targetBeat: 47.15403
-    column: 2
-  - targetBeat: 48.7076
-    column: 1
-  - targetBeat: 49.65351
-    column: 0
-  - targetBeat: 51.34237
-    column: 1
-  notePrefab: {fileID: 3324951503656431599, guid: c40046a83895c834482827dbfd6ccb52,
-    type: 3}
-  prespawnBeats: 4
+  notes: []
 --- !u!82 &346127733
 AudioSource:
   m_ObjectHideFlags: 0
@@ -858,18 +830,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &346127735
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 346127731}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e734cb37c05bd8946b1e424bbbc0a52b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &366790587
 GameObject:
   m_ObjectHideFlags: 0
