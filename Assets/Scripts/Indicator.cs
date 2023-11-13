@@ -22,7 +22,9 @@ public class Indicator : MonoBehaviour
     //This specify what action is gonna be used by the indicator
     public trigger actionIndex;
     private Fish currentFish = null;
-    private float score;
+    //This is to call score system
+    private Score score;
+
 
     //A dictionary that I use to find the name of the action specified by the index
     Dictionary<int, string> inputActionDictionary = new Dictionary<int, string>()
@@ -40,7 +42,14 @@ public class Indicator : MonoBehaviour
         triggerAction = gameplayActionMap.FindAction(inputActionDictionary[(int)actionIndex]);
 
         // We specify what method will be invoked at what time (performed in this case)
-        triggerAction.performed += ctx =>  Capture();
+        triggerAction.performed += ctx => Capture();
+
+
+    }
+    private void Start()
+    {
+        //We search score system
+        score = GameObject.FindGameObjectWithTag("Fisherman").GetComponent<Score>();
     }
 
     // Input system needs enable and disable the action in order to work.
@@ -57,20 +66,15 @@ public class Indicator : MonoBehaviour
     // Destroys the fish that is inside the indicator
     private void Capture()
     {
-        // Return if the game is paused. The prevents players from pausing the game to get points.
-        if (GameUIController.gamePaused)
-        {
-            return;
-        }
         if (currentFish != null)
         {
+            score.addScore(currentFish.beatOfThisNote); // Calls score system to work
             Destroy(currentFish.gameObject);
             currentFish = null;
-            score = PlayerPrefs.GetFloat("Score");
-            score += 1;
-            PlayerPrefs.SetFloat("Score", score);
-            Debug.Log("Score: " + score);
-
+        }
+        else
+        {
+            score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
         }
     }
 
@@ -79,7 +83,7 @@ public class Indicator : MonoBehaviour
         if (other.gameObject.CompareTag("Fish"))
         {
             currentFish = other.GetComponent<Fish>();
-            
+
         }
     }
 
@@ -88,6 +92,8 @@ public class Indicator : MonoBehaviour
         if (other.gameObject.CompareTag("Fish"))
         {
             currentFish = null;
+            score.multiplier = 1;
         }
     }
+
 }
