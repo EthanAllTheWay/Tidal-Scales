@@ -51,19 +51,18 @@ public class Score : MonoBehaviour
         if (Mathf.Abs(conductor.songPositionInBeats - targetBeat) < 0.3f)
         {
             accuracy = 1.5f;
-            Debug.Log("Perfect! " + Mathf.Abs(conductor.songPositionInBeats - targetBeat));
+           
         }
         else
         {
             accuracy = 1;
-            Debug.Log("Good" + Mathf.Abs(conductor.songPositionInBeats - targetBeat));
+           
         }
         //showed score is to save the value of each note, and can be used later to show user each one
         showedScore = (baseScore * accuracy) * multiplier;
         if (multiplier < 5) { multiplier += 1; } //x5 is the max multiplier
         totalScore = totalScore + showedScore;
-        Debug.Log(conductor.songPositionInBeats);
-        Debug.Log(targetBeat);
+        
     }
 
 }

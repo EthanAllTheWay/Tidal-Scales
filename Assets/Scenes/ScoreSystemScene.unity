@@ -833,11 +833,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd508286c448c3428f3e57ed9c2684c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  notesDataFile: Scenes/Level_1/notesData.txt
   songBpm: 190
   crotchet: 0
   songPosition: 0
   songPositionInBeats: 0
   dspSongTime: 0
+  prespawnBeats: 20
+  dspTimeOffset: 0
+  notePrefab: {fileID: 3324951503656431599, guid: c40046a83895c834482827dbfd6ccb52,
+    type: 3}
   spawnPoints:
   - {fileID: 1749849594}
   - {fileID: 1074024379}
@@ -849,9 +854,6 @@ MonoBehaviour:
   - {fileID: 627340449}
   - {fileID: 1758207202}
   notes: []
-  notePrefab: {fileID: 3324951503656431599, guid: c40046a83895c834482827dbfd6ccb52,
-    type: 3}
-  prespawnBeats: 20
 --- !u!82 &346127733
 AudioSource:
   m_ObjectHideFlags: 0
@@ -975,8 +977,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e734cb37c05bd8946b1e424bbbc0a52b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  loadedBeats: []
-  loadedNoteNumbers: 
+  outBeatsFileLocation: 
+  outNotesDataFile: 
+  rawNoteColumnPositionFileLocation: 
+  outRemapedNotesColumnPositionFileLocation: 
 --- !u!1 &366790587
 GameObject:
   m_ObjectHideFlags: 0
@@ -3967,7 +3971,6 @@ MonoBehaviour:
   gameOverScore: {fileID: 2084523487}
   audio: {fileID: 346127733}
   conductor: {fileID: 346127732}
-  fish: {fileID: 0}
 --- !u!1 &1907080623
 GameObject:
   m_ObjectHideFlags: 0
