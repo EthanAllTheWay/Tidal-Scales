@@ -71,7 +71,13 @@ public class Conductor : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
+        SetStartTime(0); 
         musicSource.Play();
+    }
+
+    private void OnDestroy()
+    {
+        notes.Clear();
     }
 
     private void FixedUpdate()
@@ -79,7 +85,6 @@ public class Conductor : MonoBehaviour
         // We update our variables
         songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
         songPositionInBeats = songPosition / crotchet;
-
         //This checks if it is time to spawn a note
         if (notesIndex < notes.Count && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
         {
@@ -127,5 +132,15 @@ public class Conductor : MonoBehaviour
     public AudioSource GetMusicSource()
     { 
         return musicSource;
+    }
+
+    /// <summary>
+    /// Used to start the song/level at a certain point.
+    /// </summary>
+    /// <param name="startTime">The time to start the song/level at.</param>
+    private void SetStartTime(int startTime)
+    {
+        musicSource.time = startTime;
+        dspTimeOffset = -startTime;
     }
 }
