@@ -71,9 +71,7 @@ public class Conductor : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
-
-        // TODO: Change this back to 0. This variable is used to start the level at a certain point.
-        SetStartTime(55); // 45
+        SetStartTime(0); 
         musicSource.Play();
     }
 
@@ -138,6 +136,10 @@ public class Conductor : MonoBehaviour
         return musicSource;
     }
 
+    /// <summary>
+    /// Used to start the song/level at a certain point.
+    /// </summary>
+    /// <param name="startTime">The time to start the song/level at.</param>
     private void SetStartTime(int startTime)
     {
         musicSource.time = startTime;
