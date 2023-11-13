@@ -66,6 +66,11 @@ public class Indicator : MonoBehaviour
     // Destroys the fish that is inside the indicator
     private void Capture()
     {
+        // Return if the game is paused. The prevents players from pausing the game to get points.
+        if (GameUIController.gamePaused)
+        {
+            return;
+        }
         if (currentFish != null)
         {
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
