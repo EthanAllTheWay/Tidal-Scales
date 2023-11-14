@@ -699,7 +699,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd508286c448c3428f3e57ed9c2684c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notesDataFile: Scenes/Level_1/notesData.txt
+  notesDataFile: notesData.txt
   songBpm: 190
   crotchet: 0
   songPosition: 0

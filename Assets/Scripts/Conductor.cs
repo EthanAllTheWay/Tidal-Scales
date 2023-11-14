@@ -101,7 +101,7 @@ public class Conductor : MonoBehaviour
     // Read data from file.
     private void LoadNotesData()
     {
-        string[] lines = File.ReadAllLines(Application.dataPath + "/" + notesDataFile);
+        string[] lines = File.ReadAllLines(Application.streamingAssetsPath + "/" + notesDataFile);
         float beat;
         int pos;
 
