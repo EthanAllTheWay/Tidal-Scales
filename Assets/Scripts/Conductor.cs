@@ -52,11 +52,9 @@ public class Conductor : MonoBehaviour
     //Notes that will be spawned throughout the song.
     public List<Note> notes;
 
-    bool control = true;
-
     private int notesIndex = 0;
-
     float difference;
+
     private void Awake()
     {
         if (instance != null)
@@ -79,24 +77,7 @@ public class Conductor : MonoBehaviour
         songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
         difference = songPosition - musicSource.time;
         songPosition -= difference;
-        /* if (songPosition == 0)
-         {
-             musicSource.PlayDelayed(LevelManager.instance.offset);
-             Debug.Log("XD");
-         }
-         else
-         {
-             LevelManager.instance.offset = songPosition;
-         }*/
     }
-
- /*   private void Update()
-    {
-        if (control && musicSource.time > 10)
-        {
-            control = false;
-        }
-    }*/
 
     private void OnDestroy()
     {
@@ -109,6 +90,8 @@ public class Conductor : MonoBehaviour
         // We update our variables
         songPosition = (float)AudioSettings.dspTime - dspSongTime- dspTimeOffset;
         difference = songPosition - musicSource.time;
+        // We calculate the difference the music source time and the conductor time 
+        // and substract it from the curren spongPosition to avoid desynchronization problems.
         songPosition -= difference;
         songPositionInBeats = songPosition / crotchet;
         //This checks if it is time to spawn a note
@@ -121,7 +104,6 @@ public class Conductor : MonoBehaviour
                 spawnedNote.targetBeat, notesIndex + 1);
             //We move to the following note
             notesIndex++;
-            //Debug.Log("The music time is: " + musicSource.time + " \nConductor position is: " + songPosition + " and the current beat is: " + songPositionInBeats);
         }
     }
 
