@@ -52,8 +52,11 @@ public class Conductor : MonoBehaviour
     //Notes that will be spawned throughout the song.
     public List<Note> notes;
 
+    bool control = true;
+
     private int notesIndex = 0;
 
+    float difference;
     private void Awake()
     {
         if (instance != null)
@@ -71,9 +74,29 @@ public class Conductor : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
-        SetStartTime(0); 
+        //SetStartTime(0); 
         musicSource.Play();
+        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
+        difference = songPosition - musicSource.time;
+        songPosition -= difference;
+        /* if (songPosition == 0)
+         {
+             musicSource.PlayDelayed(LevelManager.instance.offset);
+             Debug.Log("XD");
+         }
+         else
+         {
+             LevelManager.instance.offset = songPosition;
+         }*/
     }
+
+ /*   private void Update()
+    {
+        if (control && musicSource.time > 10)
+        {
+            control = false;
+        }
+    }*/
 
     private void OnDestroy()
     {
@@ -82,8 +105,11 @@ public class Conductor : MonoBehaviour
 
     private void FixedUpdate()
     {
+        difference = 0;
         // We update our variables
-        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
+        songPosition = (float)AudioSettings.dspTime - dspSongTime- dspTimeOffset;
+        difference = songPosition - musicSource.time;
+        songPosition -= difference;
         songPositionInBeats = songPosition / crotchet;
         //This checks if it is time to spawn a note
         if (notesIndex < notes.Count && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
@@ -95,6 +121,7 @@ public class Conductor : MonoBehaviour
                 spawnedNote.targetBeat, notesIndex + 1);
             //We move to the following note
             notesIndex++;
+            Debug.Log("The music time is: " + musicSource.time + " \nConductor position is: " + songPosition + " and the current beat is: " + songPositionInBeats);
         }
     }
 
@@ -130,7 +157,7 @@ public class Conductor : MonoBehaviour
     }
 
     public AudioSource GetMusicSource()
-    { 
+    {
         return musicSource;
     }
 
