@@ -26,7 +26,7 @@ public class Mapper : MonoBehaviour
         //RemapNotesColumnPosition();
 
         //Uncomment this line when you want to combine previous generated files
-        //CombineFiles();
+        CombineFiles();
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class Mapper : MonoBehaviour
             beatsData += Conductor.instance.songPositionInBeats + "\n";
 
             // Uncomment this line if you want to generate a file with the sampled beats
-            // WriteFile(Application.dataPath + outBeatsFileLocation, beatsData);
+           // WriteFile(Application.dataPath + outBeatsFileLocation, beatsData);
         }
     }
 
