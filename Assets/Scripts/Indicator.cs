@@ -25,6 +25,9 @@ public class Indicator : MonoBehaviour
     //This is to call score system
     private Score score;
 
+    public AudioSource catchSound;
+    public AudioSource missSound;
+
 
     //A dictionary that I use to find the name of the action specified by the index
     Dictionary<int, string> inputActionDictionary = new Dictionary<int, string>()
@@ -70,17 +73,29 @@ public class Indicator : MonoBehaviour
         {
             return;
         }
+
+
+
         if (currentFish != null)
         {
+            // Hit
+            SoundEffects.instance.missSound.Play();
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
             Destroy(currentFish.gameObject);
             currentFish = null;
         }
         else
         {
+
+            // Miss
+            SoundEffects.instance.missSound.Play();
+
+
             score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
         }
     }
+
+
 
     private void OnTriggerEnter(Collider other)
     {
