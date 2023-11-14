@@ -121,7 +121,7 @@ public class Conductor : MonoBehaviour
                 spawnedNote.targetBeat, notesIndex + 1);
             //We move to the following note
             notesIndex++;
-            Debug.Log("The music time is: " + musicSource.time + " \nConductor position is: " + songPosition + " and the current beat is: " + songPositionInBeats);
+            //Debug.Log("The music time is: " + musicSource.time + " \nConductor position is: " + songPosition + " and the current beat is: " + songPositionInBeats);
         }
     }
 
