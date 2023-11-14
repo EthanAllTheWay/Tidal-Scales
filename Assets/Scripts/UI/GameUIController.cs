@@ -24,8 +24,9 @@ public class GameUIController : MonoBehaviour
 
     private void init()
     {
+        gamePaused = false;
+        Time.timeScale = 1.0f;
         pausePanel.SetActive(false);
-
         InputActionMap = primaryInputs.FindActionMap("Gameplay");
         pauseInputAction = InputActionMap.FindAction("Pause");
         pauseInputAction.performed += context => pauseGame();
