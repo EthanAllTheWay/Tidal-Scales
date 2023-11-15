@@ -53,6 +53,7 @@ public class Conductor : MonoBehaviour
     public List<Note> notes;
 
     private int notesIndex = 0;
+    private float difference;
 
     private void Awake()
     {
@@ -71,8 +72,10 @@ public class Conductor : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
-        SetStartTime(0); 
         musicSource.Play();
+        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
+        difference = songPosition - musicSource.time;
+        songPosition -= difference;
     }
 
     private void OnDestroy()
@@ -82,8 +85,13 @@ public class Conductor : MonoBehaviour
 
     private void FixedUpdate()
     {
+        difference = 0;
         // We update our variables
-        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
+        songPosition = (float)AudioSettings.dspTime - dspSongTime- dspTimeOffset;
+        difference = songPosition - musicSource.time;
+        // We calculate the difference the music source time and the conductor time 
+        // and substract it from the current spongPosition to avoid desynchronization problems.
+        songPosition -= difference;
         songPositionInBeats = songPosition / crotchet;
         //This checks if it is time to spawn a note
         if (notesIndex < notes.Count && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
@@ -101,7 +109,7 @@ public class Conductor : MonoBehaviour
     // Read data from file.
     private void LoadNotesData()
     {
-        string[] lines = File.ReadAllLines(Application.dataPath + "/" + notesDataFile);
+        string[] lines = File.ReadAllLines(Application.streamingAssetsPath + "/" + notesDataFile);
         float beat;
         int pos;
 
@@ -130,7 +138,7 @@ public class Conductor : MonoBehaviour
     }
 
     public AudioSource GetMusicSource()
-    { 
+    {
         return musicSource;
     }
 
