@@ -26,7 +26,7 @@ public class Mapper : MonoBehaviour
         //RemapNotesColumnPosition();
 
         //Uncomment this line when you want to combine previous generated files
-        CombineFiles();
+        //CombineFiles();
     }
 
     // Update is called once per frame
