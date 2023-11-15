@@ -1112,7 +1112,7 @@ GameObject:
   - component: {fileID: 395505884}
   - component: {fileID: 395505883}
   m_Layer: 0
-  m_Name: Plane
+  m_Name: Water
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1160,7 +1160,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 964884d3c44dde24daf70ec918dc411d, type: 2}
+  - {fileID: -876546973899608171, guid: d9eea93335e9b284cbe09db24de09932, type: 3}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1199,7 +1199,7 @@ Transform:
   m_GameObject: {fileID: 395505882}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -9.16}
+  m_LocalPosition: {x: 0, y: -0.75, z: -9.16}
   m_LocalScale: {x: 1, y: 1, z: 3.14}
   m_ConstrainProportionsScale: 0
   m_Children: []
