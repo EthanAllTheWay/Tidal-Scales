@@ -53,7 +53,7 @@ public class Conductor : MonoBehaviour
     public List<Note> notes;
 
     private int notesIndex = 0;
-    float difference;
+    private float difference;
 
     private void Awake()
     {
@@ -72,7 +72,6 @@ public class Conductor : MonoBehaviour
         musicSource = GetComponent<AudioSource>();
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
-        //SetStartTime(0); 
         musicSource.Play();
         songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
         difference = songPosition - musicSource.time;
@@ -91,7 +90,7 @@ public class Conductor : MonoBehaviour
         songPosition = (float)AudioSettings.dspTime - dspSongTime- dspTimeOffset;
         difference = songPosition - musicSource.time;
         // We calculate the difference the music source time and the conductor time 
-        // and substract it from the curren spongPosition to avoid desynchronization problems.
+        // and substract it from the current spongPosition to avoid desynchronization problems.
         songPosition -= difference;
         songPositionInBeats = songPosition / crotchet;
         //This checks if it is time to spawn a note
