@@ -87,13 +87,12 @@ public class Conductor : MonoBehaviour
     {
         difference = 0;
         // We update our variables
-        songPosition = (float)AudioSettings.dspTime - dspSongTime- dspTimeOffset;
+        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
         difference = songPosition - musicSource.time;
         // We calculate the difference the music source time and the conductor time 
         // and substract it from the current spongPosition to avoid desynchronization problems.
         songPosition -= difference;
         songPositionInBeats = songPosition / crotchet;
-        Debug.Log("songposition: " + songPosition + " dspTime: " + (float)AudioSettings.dspTime + " offset: " + dspTimeOffset);
         //This checks if it is time to spawn a note
         if (notesIndex < notes.Count && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
         {

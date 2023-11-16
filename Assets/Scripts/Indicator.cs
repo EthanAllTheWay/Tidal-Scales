@@ -75,12 +75,23 @@ public class Indicator : MonoBehaviour
         }
         if (currentFish != null)
         {
+            // Hit
+
+            if (SoundEffects.instance != null && SoundEffects.instance.catchSound != null)
+            {
+                SoundEffects.instance.catchSound.Play();
+            }
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
             Destroy(currentFish.gameObject);
             currentFish = null;
         }
         else
         {
+            // Miss
+            if (SoundEffects.instance != null && SoundEffects.instance.missSound != null)
+            {
+                SoundEffects.instance.missSound.Play();
+            }
             score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
         }
     }
