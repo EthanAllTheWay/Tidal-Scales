@@ -153,12 +153,12 @@ Transform:
   m_GameObject: {fileID: 112740387}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 3.333333, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 1.5, y: 0, z: 0}
+  m_LocalScale: {x: 0.3, y: 0.3, z: 0.3}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1466313187}
-  m_Father: {fileID: 181925854}
+  m_Father: {fileID: 421030614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &112740389
 Rigidbody:
@@ -202,6 +202,8 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 0
+  catchSound: {fileID: 0}
+  missSound: {fileID: 0}
 --- !u!65 &112740391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -308,7 +310,6 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1685609829}
-  - {fileID: 112740388}
   m_Father: {fileID: 421030614}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &181925855
@@ -353,6 +354,8 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 1
+  catchSound: {fileID: 0}
+  missSound: {fileID: 0}
 --- !u!65 &181925857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -699,7 +702,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd508286c448c3428f3e57ed9c2684c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notesDataFile: Scenes/Level_1/notesData.txt
+  notesDataFile: notesData.txt
   songBpm: 190
   crotchet: 0
   songPosition: 0
@@ -1352,6 +1355,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 112740388}
   - {fileID: 181925854}
   - {fileID: 627340449}
   - {fileID: 1758207202}
@@ -2199,6 +2203,8 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 2
+  catchSound: {fileID: 0}
+  missSound: {fileID: 0}
 --- !u!54 &627340451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4097,6 +4103,8 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 3
+  catchSound: {fileID: 0}
+  missSound: {fileID: 0}
 --- !u!65 &1758207205
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4562,6 +4570,8 @@ MonoBehaviour:
   baseScore: 100
   showedScore: 0
   multiplier: 1
+  FloatingScore: {fileID: 1066257703957258834, guid: e10c3936c515fe748a0f3d26a060b497,
+    type: 3}
   gameOverScore: {fileID: 621277592}
   audio: {fileID: 346127733}
   conductor: {fileID: 346127732}

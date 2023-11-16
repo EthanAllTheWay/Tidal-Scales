@@ -13,8 +13,10 @@ public class Score : MonoBehaviour
     [SerializeField] private float baseScore = 100; //Editable base Score 
     public float showedScore;
     private float accuracy;
+    private string accuracyTxt;
     public float multiplier = 1; //When you don't fail a fish capture, you get a bonus
     private float totalScore; // The Final score 
+    public GameObject FloatingScore;
     [SerializeField] private TextMeshProUGUI gameOverScore;
     [SerializeField] private AudioSource audio;
     [SerializeField] private Conductor conductor; // We need data from this to make the perfect detection
@@ -42,6 +44,7 @@ public class Score : MonoBehaviour
         gameOverPanel.SetActive(true);
         scoreText.enabled = false;
         multiplierTxt.enabled = false;
+        
         gameOverScore.text = "Your final score: " + PlayerPrefs.GetFloat("TotalScore");
     }
 
@@ -51,18 +54,27 @@ public class Score : MonoBehaviour
         if (Mathf.Abs(conductor.songPositionInBeats - targetBeat) < 0.2f)
         {
             accuracy = 1.5f;
-           
+            accuracyTxt = "Perfect!";
+
+
         }
         else
         {
             accuracy = 1;
-           
+            accuracyTxt = "Good!";
+
         }
         //showed score is to save the value of each note, and can be used later to show user each one
         showedScore = (baseScore * accuracy) * multiplier;
         if (multiplier < 5) { multiplier += 1; } //x5 is the max multiplier
         totalScore = totalScore + showedScore;
         
+    }
+
+    public void ShowFloatingText(Vector3 v)
+    {
+        var fs = Instantiate(FloatingScore, v, Quaternion.Euler(0, -180, 0), transform);
+        fs.GetComponent<TextMeshPro>().text = accuracyTxt;
     }
 
 }

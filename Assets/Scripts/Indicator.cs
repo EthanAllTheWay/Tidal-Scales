@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -76,8 +77,9 @@ public class Indicator : MonoBehaviour
         if (currentFish != null)
         {
             // Hit
-            SoundEffects.instance.catchSound.Play();
+           // SoundEffects.instance.catchSound.Play();
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
+            score.ShowFloatingText(this.transform.position);
             Destroy(currentFish.gameObject);
             currentFish = null;
         }
@@ -109,5 +111,7 @@ public class Indicator : MonoBehaviour
             score.multiplier = 1;
         }
     }
+
+    
 
 }
