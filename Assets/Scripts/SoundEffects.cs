@@ -18,5 +18,7 @@ public class SoundEffects : MonoBehaviour
             Destroy(gameObject);
         }
         instance = this;
+        missSound.volume = 0.5f;
+        catchSound.volume = 0.5f;
     }
 }

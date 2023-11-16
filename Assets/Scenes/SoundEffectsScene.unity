@@ -970,7 +970,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd508286c448c3428f3e57ed9c2684c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notesDataFile: Scenes/Level_1/notesData.txt
+  notesDataFile: notesData.txt
   songBpm: 190
   crotchet: 0
   songPosition: 0
@@ -5181,7 +5181,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 004ca92dff18f954a9f146b6da9bd174, type: 3}
+  m_audioClip: {fileID: 8300000, guid: e00d6ef6b7ba394448697af20f22bc55, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5375,8 +5375,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37c9c8a64bda704fb0cce0840a7e2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missSound: {fileID: 1919334405}
-  catchSound: {fileID: 1919334404}
+  missSound: {fileID: 1919334404}
+  catchSound: {fileID: 1919334405}
 --- !u!4 &1919334407
 Transform:
   m_ObjectHideFlags: 0
