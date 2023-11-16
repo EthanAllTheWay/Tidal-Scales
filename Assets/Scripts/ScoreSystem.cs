@@ -47,8 +47,8 @@ public class Score : MonoBehaviour
 
     public void addScore(float targetBeat)
     {
-        //If the diference between the song beat and the fish beat is smaller than 2 miliseconds, we got a perfect that multiplies the score x1.5
-        if (Mathf.Abs(conductor.songPositionInBeats - targetBeat) < 0.2f)
+        //If the diference between the song beat and the fish beat is smaller than 3 miliseconds, we got a perfect that multiplies the score x1.5
+        if (Mathf.Abs(conductor.songPositionInBeats - targetBeat) < 0.3f)
         {
             accuracy = 1.5f;
            

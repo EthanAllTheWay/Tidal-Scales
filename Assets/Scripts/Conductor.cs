@@ -53,7 +53,6 @@ public class Conductor : MonoBehaviour
     public List<Note> notes;
 
     private int notesIndex = 0;
-    private float difference;
 
     private void Awake()
     {
@@ -73,25 +72,12 @@ public class Conductor : MonoBehaviour
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
         musicSource.Play();
-        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
-        difference = songPosition - musicSource.time;
-        songPosition -= difference;
-    }
-
-    private void OnDestroy()
-    {
-        notes.Clear();
     }
 
     private void FixedUpdate()
     {
-        difference = 0;
         // We update our variables
-        songPosition = (float)AudioSettings.dspTime - dspSongTime- dspTimeOffset;
-        difference = songPosition - musicSource.time;
-        // We calculate the difference the music source time and the conductor time 
-        // and substract it from the current spongPosition to avoid desynchronization problems.
-        songPosition -= difference;
+        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
         songPositionInBeats = songPosition / crotchet;
         Debug.Log("songposition: " + songPosition + " dspTime: " + (float)AudioSettings.dspTime + " offset: " + dspTimeOffset);
         //This checks if it is time to spawn a note
@@ -110,7 +96,7 @@ public class Conductor : MonoBehaviour
     // Read data from file.
     private void LoadNotesData()
     {
-        string[] lines = File.ReadAllLines(Application.streamingAssetsPath + "/" + notesDataFile);
+        string[] lines = File.ReadAllLines(Application.dataPath + "/" + notesDataFile);
         float beat;
         int pos;
 
@@ -139,17 +125,7 @@ public class Conductor : MonoBehaviour
     }
 
     public AudioSource GetMusicSource()
-    {
+    { 
         return musicSource;
-    }
-
-    /// <summary>
-    /// Used to start the song/level at a certain point.
-    /// </summary>
-    /// <param name="startTime">The time to start the song/level at.</param>
-    private void SetStartTime(int startTime)
-    {
-        musicSource.time = startTime;
-        dspTimeOffset = -startTime;
     }
 }

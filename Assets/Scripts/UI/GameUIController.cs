@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.InputSystem.InputAction;
+
 
 public class GameUIController : MonoBehaviour
 {
@@ -24,12 +24,11 @@ public class GameUIController : MonoBehaviour
 
     private void init()
     {
-        gamePaused = false;
-        Time.timeScale = 1.0f;
         pausePanel.SetActive(false);
+
         InputActionMap = primaryInputs.FindActionMap("Gameplay");
         pauseInputAction = InputActionMap.FindAction("Pause");
-        pauseInputAction.performed += pauseGame;
+        pauseInputAction.performed += context => pauseGame();
     }
 
     //  The OnEnable and OnDisable methods are reqired for the InputActionAsset to work.
@@ -40,11 +39,11 @@ public class GameUIController : MonoBehaviour
 
     private void OnDisable()
     {
-        pauseInputAction.performed -= pauseGame;
         primaryInputs.Disable();
     }
 
-    public void pauseGame(CallbackContext ctx)
+
+    public void pauseGame()
     {
         pausePanel.SetActive(!pausePanel.activeInHierarchy);
 
