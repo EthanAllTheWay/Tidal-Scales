@@ -79,7 +79,7 @@ public class Indicator : MonoBehaviour
             // Hit
            // SoundEffects.instance.catchSound.Play();
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
-            score.ShowFloatingText(this.transform.position);
+            score.ShowFloatingScore(this.transform.position);
             Destroy(currentFish.gameObject);
             currentFish = null;
         }
@@ -87,7 +87,8 @@ public class Indicator : MonoBehaviour
         {
 
             // Miss
-            SoundEffects.instance.missSound.Play();
+           // SoundEffects.instance.missSound.Play();
+            score.ShowMissMessage(this.transform.position);
             score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
         }
     }

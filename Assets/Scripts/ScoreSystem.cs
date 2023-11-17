@@ -71,10 +71,16 @@ public class Score : MonoBehaviour
         
     }
 
-    public void ShowFloatingText(Vector3 v)
+    public void ShowFloatingScore(Vector3 v)
     {
         var fs = Instantiate(FloatingScore, v, Quaternion.Euler(0, -180, 0), transform);
         fs.GetComponent<TextMeshPro>().text = accuracyTxt;
+    }
+
+    public void ShowMissMessage(Vector3 v)
+    {
+        var Mmsj = Instantiate(FloatingScore, v, Quaternion.Euler(0, -180, 0), transform);
+        Mmsj.GetComponent<TextMeshPro>().text = "Miss!";
     }
 
 }
