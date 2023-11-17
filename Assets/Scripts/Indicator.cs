@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using static UnityEngine.InputSystem.InputAction;
 
 [Serializable]
 public enum trigger
@@ -49,7 +50,7 @@ public class Indicator : MonoBehaviour
         triggerAction = gameplayActionMap.FindAction(inputActionDictionary[(int)actionIndex]);
 
         // We specify what method will be invoked at what time (performed in this case)
-        triggerAction.performed += ctx => Capture();
+        triggerAction.performed += Capture;
     }
 
     private void Start()
@@ -91,11 +92,12 @@ public class Indicator : MonoBehaviour
 
     private void OnDisable()
     {
+        triggerAction.performed -= Capture;
         triggerAction.Disable();
     }
 
     // Destroys the fish that is inside the indicator
-    private void Capture()
+    private void Capture(CallbackContext ctx)
     {
         // Return if the game is paused. The prevents players from pausing the game to get points.
         if (GameUIController.gamePaused)
@@ -105,7 +107,7 @@ public class Indicator : MonoBehaviour
         if (currentFish != null)
         {
             // Hit
-            SoundEffects.PlayAudioClip(audioSource, catchClipArray, (int) actionIndex);
+            SoundEffects.PlayAudioClip(audioSource, catchClipArray, (int)actionIndex);
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
             score.ShowFloatingScore(this.transform.position);
             Destroy(currentFish.gameObject);
@@ -139,6 +141,6 @@ public class Indicator : MonoBehaviour
         }
     }
 
-    
+
 
 }
