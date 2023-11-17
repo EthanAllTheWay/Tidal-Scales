@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+/// <summary>
+/// This class is to store all audio clips and utility method for audio clips.
+/// </summary>
 public class SoundEffects : MonoBehaviour
 {
+    public AudioSource audioSource;
 
-    public AudioSource missSound;
+    public AudioClip[] missClipArray;
 
-    public AudioSource catchSound;
+    public AudioClip[] catchClipArray;
 
     public static SoundEffects instance;
 
@@ -20,28 +25,39 @@ public class SoundEffects : MonoBehaviour
         instance = this;
     }
 
-    /**
-    * Creates a sub clip from an audio clip based off of the start time
-    * and the stop time. The new clip will have the same frequency as
-    * the original.
-    */
-    private AudioClip MakeSubclip(AudioClip clip, float start, float stop)
+    private void Start()
     {
-        /* Create a new audio clip */
-        int frequency = clip.frequency;
-        float timeLength = stop - start;
-        int samplesLength = (int)(frequency * timeLength);
-        AudioClip newClip = AudioClip.Create(clip.name + "-sub", samplesLength, 1, frequency, false);
-
-        /* Create a temporary buffer for the samples */
-        float[] data = new float[samplesLength];
-        /* Get the data from the original clip */
-        clip.GetData(data, (int)(frequency * start));
-        /* Transfer the data to the new clip */
-        newClip.SetData(data, 0);
-
-        /* Return the sub clip */
-        return newClip;
+        audioSource = GetComponent<AudioSource>();
     }
+
+    /// <summary>
+    /// Plays a selected audio clip once from an array.
+    /// </summary>
+    /// <param name="audioSource">The audio source class to play the clip.</param>
+    /// <param name="audioClipArray">The array of audio clips to choose from.</param>
+    /// <param name="arrayIndex">The index of the array to choose an audio clip.</param>
+    public static void PlayAudioClip(AudioSource audioSource, AudioClip[] audioClipArray, int arrayIndex)
+    {
+        if (audioSource != null 
+            && audioClipArray != null 
+            && Enumerable.Range(0, audioClipArray.Length).Contains(arrayIndex))
+        {
+            audioSource.PlayOneShot(audioClipArray[arrayIndex]);
+        }
+    }
+
+    /// <summary>
+    /// Plays a single audio clip once at random from a list of audio clips.
+    /// </summary>
+    /// <param name="audioSource">The audio source class to play the clip.</param>
+    /// <param name="audioClipArray">The array of audio clips to choose from.</param>
+    public static void PlayAudioClipAtRandom(AudioSource audioSource, AudioClip[] audioClipArray)
+    {
+        if (audioSource != null && audioClipArray != null)
+        {
+            audioSource.PlayOneShot(audioClipArray[Random.Range(0, audioClipArray.Length)]);
+        }
+    }
+
 
 }

@@ -470,8 +470,6 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 0
-  catchSound: {fileID: 0}
-  missSound: {fileID: 0}
 --- !u!65 &112740391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -622,8 +620,6 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 1
-  catchSound: {fileID: 0}
-  missSound: {fileID: 0}
 --- !u!65 &181925857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -970,7 +966,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd508286c448c3428f3e57ed9c2684c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notesDataFile: Scenes/Level_1/notesData.txt
+  notesDataFile: notesData.txt
   songBpm: 190
   crotchet: 0
   songPosition: 0
@@ -2204,8 +2200,6 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 2
-  catchSound: {fileID: 0}
-  missSound: {fileID: 0}
 --- !u!54 &627340451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3626,10 +3620,10 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 812809311}
-        m_TargetAssemblyTypeName: GameUIController, Assembly-CSharp
-        m_MethodName: pauseGame
-        m_Mode: 1
+      - m_Target: {fileID: 474359780}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -4271,8 +4265,6 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 3
-  catchSound: {fileID: 0}
-  missSound: {fileID: 0}
 --- !u!65 &1758207205
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5163,7 +5155,6 @@ GameObject:
   - component: {fileID: 1919334407}
   - component: {fileID: 1919334406}
   - component: {fileID: 1919334405}
-  - component: {fileID: 1919334404}
   m_Layer: 0
   m_Name: SoundEffects
   m_TagString: Untagged
@@ -5171,102 +5162,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!82 &1919334404
-AudioSource:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1919334403}
-  m_Enabled: 1
-  serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 004ca92dff18f954a9f146b6da9bd174, type: 3}
-  m_PlayOnAwake: 0
-  m_Volume: 1
-  m_Pitch: 1
-  Loop: 0
-  Mute: 0
-  Spatialize: 0
-  SpatializePostEffects: 0
-  Priority: 128
-  DopplerLevel: 1
-  MinDistance: 1
-  MaxDistance: 500
-  Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
-  BypassListenerEffects: 0
-  BypassReverbZones: 0
-  rolloffCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  panLevelCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  spreadCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  reverbZoneMixCustomCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
 --- !u!82 &1919334405
 AudioSource:
   m_ObjectHideFlags: 0
@@ -5277,7 +5172,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: db88eed05d60e294a93669dcfc31c7e9, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -5375,8 +5270,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e37c9c8a64bda704fb0cce0840a7e2c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  missSound: {fileID: 1919334405}
-  catchSound: {fileID: 1919334404}
+  audioSource: {fileID: 1919334405}
+  missClipArray:
+  - {fileID: 8300000, guid: 2d4bdc426d3cb7b47baf7c956588e995, type: 3}
+  - {fileID: 8300000, guid: 4f1014ed450bcab47bb3a67124505f53, type: 3}
+  - {fileID: 8300000, guid: 037e7dc708b9bbf4abd53255ad5583f6, type: 3}
+  - {fileID: 8300000, guid: f9dc22234b5ec2d47be21f334360d404, type: 3}
+  - {fileID: 8300000, guid: 20acd61a2c6572d47a25af8521578bba, type: 3}
+  catchClipArray:
+  - {fileID: 8300000, guid: d713b9327ca04954f8b46120fc895a01, type: 3}
+  - {fileID: 8300000, guid: e91b75f03b5128d4393d5654d329ccc8, type: 3}
+  - {fileID: 8300000, guid: 0506437915c10d842a2f99a1b9a723ea, type: 3}
+  - {fileID: 8300000, guid: 27032e18d0fa029438a38153a461fe47, type: 3}
+  - {fileID: 8300000, guid: fcb77277b41d1ac4380ef8cbf20f21d2, type: 3}
 --- !u!4 &1919334407
 Transform:
   m_ObjectHideFlags: 0
