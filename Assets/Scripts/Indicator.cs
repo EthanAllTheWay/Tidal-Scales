@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -106,12 +107,14 @@ public class Indicator : MonoBehaviour
             // Hit
             SoundEffects.PlayAudioClip(audioSource, catchClipArray, (int) actionIndex);
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
+            score.ShowFloatingScore(this.transform.position);
             Destroy(currentFish.gameObject);
             currentFish = null;
         }
         else
         {
             // Miss
+            score.ShowMissMessage(this.transform.position);
             SoundEffects.PlayAudioClipAtRandom(audioSource, missClipArray);
             score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
         }
@@ -135,5 +138,7 @@ public class Indicator : MonoBehaviour
             score.multiplier = 1;
         }
     }
+
+    
 
 }
