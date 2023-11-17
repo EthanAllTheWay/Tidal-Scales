@@ -25,8 +25,11 @@ public class Indicator : MonoBehaviour
     //This is to call score system
     private Score score;
 
-    public AudioSource catchSound;
-    public AudioSource missSound;
+    // Sound variables
+    private SoundEffects soundEffectsInstance;
+    private AudioSource audioSource = null;
+    private AudioClip[] missClipArray = null;
+    private AudioClip[] catchClipArray = null;
 
 
     //A dictionary that I use to find the name of the action specified by the index
@@ -52,6 +55,31 @@ public class Indicator : MonoBehaviour
     {
         //We search score system
         score = GameObject.FindGameObjectWithTag("Fisherman").GetComponent<Score>();
+
+        // Assign audio clips for the SoundEffects class if instance is not null.
+        soundEffectsInstance = SoundEffects.instance;
+        if (soundEffectsInstance == null)
+        {
+            Debug.LogWarning("SoundEffects instance is null.");
+        }
+        else
+        {
+            audioSource = SoundEffects.instance.audioSource;
+            if (audioSource == null)
+            {
+                Debug.LogWarning("audio source is null. Unable to play audio clips.");
+            }
+            missClipArray = SoundEffects.instance.missClipArray;
+            if (missClipArray == null)
+            {
+                Debug.LogWarning("note miss audio clip array is null. Will not be able to play these audio clips.");
+            }
+            catchClipArray = SoundEffects.instance.catchClipArray;
+            if (catchClipArray == null)
+            {
+                Debug.LogWarning("note catch audio clip array is null. Will not be able to play these audio clips.");
+            }
+        }
     }
 
     // Input system needs enable and disable the action in order to work.
@@ -75,16 +103,19 @@ public class Indicator : MonoBehaviour
         }
         if (currentFish != null)
         {
+            // Hit
+            SoundEffects.PlayAudioClip(audioSource, catchClipArray, (int) actionIndex);
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
             Destroy(currentFish.gameObject);
             currentFish = null;
         }
         else
         {
+            // Miss
+            SoundEffects.PlayAudioClipAtRandom(audioSource, missClipArray);
             score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
         }
     }
-
 
 
     private void OnTriggerEnter(Collider other)
