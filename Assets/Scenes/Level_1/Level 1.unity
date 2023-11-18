@@ -1139,8 +1139,11 @@ MonoBehaviour:
   dspSongTime: 0
   prespawnBeats: 12
   dspTimeOffset: 0
-  notePrefab: {fileID: 3324951503656431599, guid: c40046a83895c834482827dbfd6ccb52,
-    type: 3}
+  notePrefabArray:
+  - {fileID: 3324951503656431599, guid: fe0e60de4de4beb4e9f409bd2bef9713, type: 3}
+  - {fileID: 3324951503656431599, guid: 95e1db148fda2264ba52e816117dcfbe, type: 3}
+  - {fileID: 3324951503656431599, guid: 780ddc9a97a8a944bbec6edc3cd1d0fb, type: 3}
+  - {fileID: 3324951503656431599, guid: c953d122bcdbf1040af42e45a8c4d76a, type: 3}
   spawnPoints:
   - {fileID: 1749849594}
   - {fileID: 1074024379}
