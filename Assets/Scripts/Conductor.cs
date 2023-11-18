@@ -43,7 +43,7 @@ public class Conductor : MonoBehaviour
     [Header("Notes elements")]
     // They need to contain indicators and spawn points in the following order:
     // Left, Middle left, Middle right and right
-    public GameObject notePrefab;
+    public GameObject[] notePrefabArray;
     public Transform[] spawnPoints;
     public Transform[] indicatorPoints;
 
@@ -97,7 +97,8 @@ public class Conductor : MonoBehaviour
         if (notesIndex < notes.Count && notes[notesIndex].targetBeat < songPositionInBeats + prespawnBeats)
         {
             Note spawnedNote = notes[notesIndex];
-            Instantiate(notePrefab).GetComponent<Fish>().InitializeValues(
+
+            Instantiate(notePrefabArray[UnityEngine.Random.Range(0, notePrefabArray.Length)]).GetComponent<Fish>().InitializeValues(
                 spawnPoints[spawnedNote.column].position,
                 indicatorPoints[spawnedNote.column].position,
                 spawnedNote.targetBeat, notesIndex + 1);
