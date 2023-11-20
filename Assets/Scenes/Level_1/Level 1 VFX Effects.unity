@@ -2543,55 +2543,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4ce450748cac3cd4684c20e1ef86a8e1, type: 3}
---- !u!1 &604881930
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 604881931}
-  - component: {fileID: 604881932}
-  m_Layer: 0
-  m_Name: WindSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &604881931
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604881930}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &604881932
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 604881930}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 70f8c654096100f478c131a30c1933c9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  windObject: {fileID: 197068414616838878, guid: b0f5b6db56947bd4d8f48616eb75c26c,
-    type: 3}
-  windDirection: {x: 0, y: 0, z: 0, w: 0}
-  windSpawnRange: {x: 100, y: 50, z: 100}
-  windDensity: 5
 --- !u!1 &621277590
 GameObject:
   m_ObjectHideFlags: 0
@@ -7493,6 +7444,74 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2134017761}
   m_CullTransparentMesh: 1
+--- !u!1001 &332836155993480654
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6552399891013165506, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7343663657609472580, guid: f1574a78608c4d0419eb115cf6ebb84f,
+        type: 3}
+      propertyPath: m_Name
+      value: WindSpawner
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: f1574a78608c4d0419eb115cf6ebb84f, type: 3}
 --- !u!1001 &434008150683977192
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7753,4 +7772,4 @@ SceneRoots:
   - {fileID: 3338808951968210156}
   - {fileID: 434008150683977192}
   - {fileID: 8301094462314382990}
-  - {fileID: 604881931}
+  - {fileID: 332836155993480654}
