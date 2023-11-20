@@ -121,6 +121,7 @@ public class Indicator : MonoBehaviour
         else
         {
             // Miss
+            PlayParticleEffects(splashEffectList);
             score.ShowMissMessage(this.transform.position);
             SoundEffects.PlayAudioClipAtRandom(audioSource, missClipArray);
             score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
