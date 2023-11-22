@@ -35,7 +35,7 @@ public class Indicator : MonoBehaviour
 
     // Splash effect variables
     [SerializeField]
-    private ParticleSystem[] splashEffectList;
+    private ParticleSystem splashEffect;
 
 
     //A dictionary that I use to find the name of the action specified by the index
@@ -111,7 +111,7 @@ public class Indicator : MonoBehaviour
         if (currentFish != null)
         {
             // Hit
-            PlayParticleEffects(splashEffectList);
+            splashEffect.Play();
             SoundEffects.PlayAudioClip(audioSource, catchClipArray, (int)actionIndex);
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
             score.ShowFloatingScore(this.transform.position);
@@ -145,15 +145,5 @@ public class Indicator : MonoBehaviour
             score.multiplier = 1;
         }
     }
-
-    private void PlayParticleEffects(ParticleSystem[] particleSystemList)
-    {
-        foreach (ParticleSystem particle in particleSystemList) 
-        {
-            particle.Play();
-        }
-    }
-
-
 
 }

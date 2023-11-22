@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5611579090613335171}
   - component: {fileID: 7303746620276137630}
   m_Layer: 0
-  m_Name: Ripple Particle System
+  m_Name: Ripple_PS
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
