@@ -33,6 +33,7 @@ public class MenuController : MonoBehaviour
 
     private void init()
     {
+        Time.timeScale = 1;
         startMenu.SetActive(true);
         settingsMenu.SetActive(false);
         quitConfirmationMenu.SetActive(false);
