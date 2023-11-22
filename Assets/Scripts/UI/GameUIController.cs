@@ -33,10 +33,7 @@ public class GameUIController : MonoBehaviour
         InputActionMap = primaryInputs.FindActionMap("Gameplay");
         pauseInputAction = InputActionMap.FindAction("Pause");
         pauseInputAction.performed += context => pauseGame();
-        continueButton = pausePanel.transform.Find("Continue Button").gameObject; // Maybe this is a bad way of getting the gamebject
-                                                                                  // since the name can be changed outside of this script.
-
-
+        continueButton = pausePanel.transform.Find("Continue Button").gameObject; 
     }
 
     //  The OnEnable and OnDisable methods are reqired for the InputActionAsset to work.
