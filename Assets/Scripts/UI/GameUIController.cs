@@ -76,6 +76,27 @@ public class GameUIController : MonoBehaviour
         }
     }
 
+    public void pauseGame()
+    {
+        pausePanel.SetActive(!pausePanel.activeInHierarchy);
+
+        if (pausePanel.activeInHierarchy)
+        {
+            // Pause game and music.
+            Time.timeScale = 0;
+            gamePaused = true;
+            Conductor.instance.GetMusicSource().Pause();
+        }
+        else
+        {
+            // Unpause game and music.
+            Time.timeScale = 1;
+            gamePaused = false;
+            Conductor.instance.GetMusicSource().Play();
+            Conductor.instance.dspTimeOffset = (float)AudioSettings.dspTime - Conductor.instance.dspSongTime - Conductor.instance.songPosition;
+        }
+    }
+
     private IEnumerator FinishPanel()
     {
         yield return new WaitForSeconds(Conductor.instance.GetMusicSource().clip.length - 3.5f); //Here we wait to call the finish panel
