@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
 public class Score : MonoBehaviour
@@ -10,6 +11,7 @@ public class Score : MonoBehaviour
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI multiplierTxt;
     public GameObject gameOverPanel;
+    private GameObject restartButton;
     [SerializeField] private float baseScore = 100; //Editable base Score 
     public float showedScore;
     private float accuracy;
@@ -28,6 +30,8 @@ public class Score : MonoBehaviour
         PlayerPrefs.DeleteKey("showScore");
         PlayerPrefs.DeleteKey("TotalScore");
         StartCoroutine(FinishPanel()); //When the sccene starts, we get a timer to show the end panel
+
+        restartButton = gameOverPanel.transform.Find("BtnRestart").gameObject;
     }
 
     // Update is called once per frame
@@ -44,8 +48,8 @@ public class Score : MonoBehaviour
         gameOverPanel.SetActive(true);
         scoreText.enabled = false;
         multiplierTxt.enabled = false;
-        
         gameOverScore.text = "Your final score: " + PlayerPrefs.GetFloat("TotalScore");
+        EventSystem.current.SetSelectedGameObject(restartButton);
     }
 
     public void addScore(float targetBeat)
