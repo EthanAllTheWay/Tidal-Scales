@@ -54,7 +54,7 @@ public class Indicator : MonoBehaviour
 
         // We specify what method will be invoked at what time (performed in this case)
         triggerAction.performed += Capture;
-        triggerAction.canceled += ctx => transform.position = new Vector3(transform.position.x, originalValue, transform.position.z); 
+        triggerAction.canceled += RestorePos; 
     }
 
     private void Start()
@@ -97,6 +97,7 @@ public class Indicator : MonoBehaviour
     private void OnDisable()
     {
         triggerAction.performed -= Capture;
+        triggerAction.canceled -= RestorePos;
         triggerAction.Disable();
     }
 
@@ -127,6 +128,10 @@ public class Indicator : MonoBehaviour
         }
     }
 
+    void RestorePos(CallbackContext ctx)
+    {
+        transform.position = new Vector3(transform.position.x, originalValue, transform.position.z);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

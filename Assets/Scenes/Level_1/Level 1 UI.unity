@@ -291,6 +291,7 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 0
+  pressValue: 0.15
 --- !u!65 &112740391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -757,6 +758,7 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 1
+  pressValue: 0.15
 --- !u!65 &181925857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2949,6 +2951,7 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 2
+  pressValue: 0.15
 --- !u!54 &627340451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3353,6 +3356,8 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   pausePanel: {fileID: 474359780}
+  gameOverPanel: {fileID: 2134017761}
+  gameOverScore: {fileID: 621277592}
 --- !u!114 &812809312
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5987,6 +5992,7 @@ MonoBehaviour:
   primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
     type: 3}
   actionIndex: 3
+  pressValue: 0.15
 --- !u!65 &1758207205
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -6505,13 +6511,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 475612941}
   multiplierTxt: {fileID: 842392779}
-  gameOverPanel: {fileID: 2134017761}
   baseScore: 100
   showedScore: 0
   multiplier: 1
   FloatingScore: {fileID: 1066257703957258834, guid: e10c3936c515fe748a0f3d26a060b497,
     type: 3}
-  gameOverScore: {fileID: 621277592}
   audio: {fileID: 346127733}
   conductor: {fileID: 346127732}
 --- !u!1001 &1869787432
