@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
 public class GameUIController : MonoBehaviour
@@ -15,6 +17,7 @@ public class GameUIController : MonoBehaviour
     [SerializeField]
     private GameObject pausePanel;
     public static bool gamePaused = false;
+    private GameObject continueButton;
 
     // Start is called before the first frame update
     void Awake()
@@ -29,7 +32,11 @@ public class GameUIController : MonoBehaviour
         pausePanel.SetActive(false);
         InputActionMap = primaryInputs.FindActionMap("Gameplay");
         pauseInputAction = InputActionMap.FindAction("Pause");
-        pauseInputAction.performed += pauseGame;
+        pauseInputAction.performed += context => pauseGame();
+        continueButton = pausePanel.transform.Find("Continue Button").gameObject; // Maybe this is a bad way of getting the gamebject
+                                                                                  // since the name can be changed outside of this script.
+
+
     }
 
     //  The OnEnable and OnDisable methods are reqired for the InputActionAsset to work.
@@ -40,20 +47,20 @@ public class GameUIController : MonoBehaviour
 
     private void OnDisable()
     {
-        pauseInputAction.performed -= pauseGame;
+        pauseInputAction.performed -= context => pauseGame();
         primaryInputs.Disable();
     }
 
-    public void pauseGame(CallbackContext ctx)
+    public void pauseGame()
     {
         pausePanel.SetActive(!pausePanel.activeInHierarchy);
-
         if (pausePanel.activeInHierarchy)
         {
             // Pause game and music.
             Time.timeScale = 0;
             gamePaused = true;
             Conductor.instance.GetMusicSource().Pause();
+            EventSystem.current.SetSelectedGameObject(continueButton);
         }
         else
         {
