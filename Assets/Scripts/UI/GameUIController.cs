@@ -18,6 +18,7 @@ public class GameUIController : MonoBehaviour
     private GameObject pausePanel;
     public static bool gamePaused = false;
     public GameObject gameOverPanel;
+    public float gameOverOffsetTime = 3.5f;
     [SerializeField] private TextMeshProUGUI gameOverScore;
     private GameObject continueButton;
     private GameObject restartButton;
@@ -89,7 +90,7 @@ public class GameUIController : MonoBehaviour
 
     private IEnumerator FinishPanel()
     {
-        yield return new WaitForSeconds(Conductor.instance.GetMusicSource().clip.length - 3.5f); //Here we wait to call the finish panel
+        yield return new WaitForSeconds(Conductor.instance.GetMusicSource().clip.length + gameOverOffsetTime); //Here we wait to call the finish panel
         Score.Instance.SaveScore();
         gameOverPanel.SetActive(true);
         gameOverScore.text = "Your final score: " + PlayerPrefs.GetFloat("TotalScore");
