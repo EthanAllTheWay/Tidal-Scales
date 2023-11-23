@@ -1132,7 +1132,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   notesDataFile: LakeNotesData.txt
-  songBpm: 190
+  songBpm: 111
   crotchet: 0
   songPosition: 0
   songPositionInBeats: 0
