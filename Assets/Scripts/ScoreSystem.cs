@@ -8,10 +8,9 @@ using UnityEngine.UIElements;
 
 public class Score : MonoBehaviour
 {
+    public static Score Instance;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI multiplierTxt;
-    public GameObject gameOverPanel;
-    private GameObject restartButton;
     [SerializeField] private float baseScore = 100; //Editable base Score 
     public float showedScore;
     private float accuracy;
@@ -29,9 +28,6 @@ public class Score : MonoBehaviour
         //We clear scores
         PlayerPrefs.DeleteKey("showScore");
         PlayerPrefs.DeleteKey("TotalScore");
-        StartCoroutine(FinishPanel()); //When the sccene starts, we get a timer to show the end panel
-
-        restartButton = gameOverPanel.transform.Find("BtnRestart").gameObject;
     }
 
     // Update is called once per frame
@@ -39,17 +35,6 @@ public class Score : MonoBehaviour
     {
         scoreText.text = "Score: " + totalScore;
         multiplierTxt.text = "X" + multiplier;
-    }
-
-    private IEnumerator FinishPanel()
-    {
-        yield return new WaitForSeconds(audio.clip.length - 3.5f); //Here we wait to call the finish panel
-        PlayerPrefs.SetFloat("TotalScore", totalScore);
-        gameOverPanel.SetActive(true);
-        scoreText.enabled = false;
-        multiplierTxt.enabled = false;
-        gameOverScore.text = "Your final score: " + PlayerPrefs.GetFloat("TotalScore");
-        EventSystem.current.SetSelectedGameObject(restartButton);
     }
 
     public void addScore(float targetBeat)
@@ -85,6 +70,11 @@ public class Score : MonoBehaviour
     {
         var Mmsj = Instantiate(FloatingScore, v, Quaternion.Euler(0, -180, 0), transform);
         Mmsj.GetComponent<TextMeshPro>().text = "Miss!";
+    }
+
+    public void SaveScore()
+    {
+        PlayerPrefs.SetFloat("TotalScore", totalScore);
     }
 
 }
