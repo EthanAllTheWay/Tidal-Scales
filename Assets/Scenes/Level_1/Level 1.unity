@@ -890,6 +890,7 @@ MonoBehaviour:
     type: 3}
   pausePanel: {fileID: 1227560058}
   gameOverPanel: {fileID: 1403162306}
+  gameOverOffsetTime: 0
   gameOverScore: {fileID: 510884670}
 --- !u!114 &281698173
 MonoBehaviour:
