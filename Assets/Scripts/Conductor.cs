@@ -62,6 +62,7 @@ public class Conductor : MonoBehaviour
             Destroy(gameObject);
         }
         instance = this;
+        musicSource = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
@@ -69,7 +70,6 @@ public class Conductor : MonoBehaviour
     {
         // We initialize our variables and play the music.
         LoadNotesData();
-        musicSource = GetComponent<AudioSource>();
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
         musicSource.Play();
