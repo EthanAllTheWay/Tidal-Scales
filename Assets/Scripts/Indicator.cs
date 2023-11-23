@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 using static UnityEngine.InputSystem.InputAction;
 
 [Serializable]
@@ -28,6 +29,9 @@ public class Indicator : MonoBehaviour
     private Fish currentFish = null;
     //This is to call score system
     private Score score;
+    public static bool controllerInput;
+    public static bool keyboardInput;
+    public static InputControl currentControlInput;
 
     // Sound variables
     private SoundEffects soundEffectsInstance;
@@ -48,6 +52,7 @@ public class Indicator : MonoBehaviour
         {2 ,"Right middle trigger" },
         {3, "Right trigger"}
     };
+
 
     private void Awake()
     {
@@ -114,6 +119,24 @@ public class Indicator : MonoBehaviour
         {
             return;
         }
+
+        InputControl currentInput = ctx.action.activeControl;
+
+        if (currentControlInput == null)
+        {
+            currentControlInput = currentInput;
+        }
+
+        if (currentControlInput.GetType() != currentInput.GetType())
+        {
+            // Switch input labels to the indicator.
+            SwitchInputLabels(currentInput);
+        }
+        else
+        {
+            Debug.Log("controls have not changed.");
+        }
+
         if (currentFish != null)
         {
             // Hit
@@ -154,6 +177,26 @@ public class Indicator : MonoBehaviour
             currentFish = null;
             score.multiplier = 1;
         }
+    }
+
+    /// <summary>
+    /// Switch the input labels on the Indicator GameObject.
+    /// </summary>
+    /// <param name="inputType"></param>
+    private void SwitchInputLabels(InputControl inputType)
+    { 
+        switch (inputType)
+        {
+            case KeyControl:
+                currentControlInput = inputType;
+                Debug.Log("Switching labels to keyboard inputs.");
+                break;
+            case ButtonControl:
+                currentControlInput = inputType;
+                Debug.Log("Switching labels to Gamepad inputs.");
+                break;
+        }
+
     }
 
 }
