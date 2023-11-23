@@ -1131,13 +1131,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dd508286c448c3428f3e57ed9c2684c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  notesDataFile: notesData.txt
-  songBpm: 190
+  notesDataFile: LakeNotesData.txt
+  songBpm: 111
   crotchet: 0
   songPosition: 0
   songPositionInBeats: 0
   dspSongTime: 0
-  prespawnBeats: 12
+  prespawnBeats: 10
   dspTimeOffset: 0
   notePrefabArray:
   - {fileID: 3324951503656431599, guid: fe0e60de4de4beb4e9f409bd2bef9713, type: 3}
@@ -1165,7 +1165,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: 8e02f852d077cae4c940b1bee5eefe5a, type: 3}
+  m_audioClip: {fileID: 8300000, guid: a0dd6a5b48d79ab4288366c27545ee51, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1

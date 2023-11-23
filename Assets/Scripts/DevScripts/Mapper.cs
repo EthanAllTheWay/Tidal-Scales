@@ -23,10 +23,10 @@ public class Mapper : MonoBehaviour
     {
         //Uncomment this line if you want to remap the notes position
         //from MIDI keys to the game columns indicators position
-        //RemapNotesColumnPosition();
+        // RemapNotesColumnPosition();
 
         //Uncomment this line when you want to combine previous generated files
-        //CombineFiles();
+        CombineFiles();
     }
 
     // Update is called once per frame
@@ -40,7 +40,7 @@ public class Mapper : MonoBehaviour
             beatsData += Conductor.instance.songPositionInBeats + "\n";
 
             // Uncomment this line if you want to generate a file with the sampled beats
-           // WriteFile(Application.dataPath + outBeatsFileLocation, beatsData);
+           // WriteFile(Application.dataPath + "/" + outBeatsFileLocation, beatsData);
         }
     }
 
@@ -86,14 +86,15 @@ public class Mapper : MonoBehaviour
         // To illustrate: Values from 50 to 60 refers to the note number in a MIDI keyboard
         for (int i = 0; i < loadedNoteNumbers.Count; i++)
         {
-            if (loadedNoteNumbers[i] < 60)
-                loadedNoteNumbers[i] = 0;
-            else if (loadedNoteNumbers[i] < 64)
-                loadedNoteNumbers[i] = 1;
-            else if (loadedNoteNumbers[i] < 67)
-                loadedNoteNumbers[i] = 2;
+            if (loadedNoteNumbers[i] < 53)
+                lines[i] = "0";
+            else if (loadedNoteNumbers[i] < 56)
+                lines[i] = "1";
+            else if (loadedNoteNumbers[i] < 60)
+                lines[i] = "2";
             else
-                loadedNoteNumbers[i] = 3;
+                lines[i] = "3";
+
         }
 
         WriteFile(Application.dataPath + outRemapedNotesColumnPositionFileLocation, lines);
