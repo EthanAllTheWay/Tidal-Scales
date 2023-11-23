@@ -7,9 +7,9 @@ using UnityEngine.UIElements;
 
 public class Score : MonoBehaviour
 {
+    public static Score Instance;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI multiplierTxt;
-    public GameObject gameOverPanel;
     [SerializeField] private float baseScore = 100; //Editable base Score 
     public float showedScore;
     private float accuracy;
@@ -17,17 +17,24 @@ public class Score : MonoBehaviour
     public float multiplier = 1; //When you don't fail a fish capture, you get a bonus
     private float totalScore; // The Final score 
     public GameObject FloatingScore;
-    [SerializeField] private TextMeshProUGUI gameOverScore;
     [SerializeField] private AudioSource audio;
     [SerializeField] private Conductor conductor; // We need data from this to make the perfect detection
     private Fish fish;           // We need data from this to make the perfect detection
+    
+    private void Awake()
+    {
+        if (Instance != null)
+            Destroy(gameObject);
+
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         //We clear scores
         PlayerPrefs.DeleteKey("showScore");
         PlayerPrefs.DeleteKey("TotalScore");
-        StartCoroutine(FinishPanel()); //When the sccene starts, we get a timer to show the end panel
     }
 
     // Update is called once per frame
@@ -35,17 +42,6 @@ public class Score : MonoBehaviour
     {
         scoreText.text = "Score: " + totalScore;
         multiplierTxt.text = "X" + multiplier;
-    }
-
-    private IEnumerator FinishPanel()
-    {
-        yield return new WaitForSeconds(audio.clip.length - 3.5f); //Here we wait to call the finish panel
-        PlayerPrefs.SetFloat("TotalScore", totalScore);
-        gameOverPanel.SetActive(true);
-        scoreText.enabled = false;
-        multiplierTxt.enabled = false;
-        
-        gameOverScore.text = "Your final score: " + PlayerPrefs.GetFloat("TotalScore");
     }
 
     public void addScore(float targetBeat)
@@ -68,7 +64,7 @@ public class Score : MonoBehaviour
         showedScore = (baseScore * accuracy) * multiplier;
         if (multiplier < 5) { multiplier += 1; } //x5 is the max multiplier
         totalScore = totalScore + showedScore;
-        
+
     }
 
     public void ShowFloatingScore(Vector3 v)
@@ -83,4 +79,8 @@ public class Score : MonoBehaviour
         Mmsj.GetComponent<TextMeshPro>().text = "Miss!";
     }
 
+    public void SaveScore()
+    {
+        PlayerPrefs.SetFloat("TotalScore", totalScore);
+    }
 }

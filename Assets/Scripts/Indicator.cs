@@ -23,6 +23,8 @@ public class Indicator : MonoBehaviour
     InputAction triggerAction;
     //This specify what action is gonna be used by the indicator
     public trigger actionIndex;
+    public float pressValue = 0.15f;
+    private float originalValue;
     private Fish currentFish = null;
     //This is to call score system
     private Score score;
@@ -45,12 +47,14 @@ public class Indicator : MonoBehaviour
 
     private void Awake()
     {
+        originalValue = transform.position.y;
         // We read information from the inputs mapping
         gameplayActionMap = primaryInputs.FindActionMap("Gameplay");
         triggerAction = gameplayActionMap.FindAction(inputActionDictionary[(int)actionIndex]);
 
         // We specify what method will be invoked at what time (performed in this case)
         triggerAction.performed += Capture;
+        triggerAction.canceled += RestorePos; 
     }
 
     private void Start()
@@ -93,12 +97,14 @@ public class Indicator : MonoBehaviour
     private void OnDisable()
     {
         triggerAction.performed -= Capture;
+        triggerAction.canceled -= RestorePos;
         triggerAction.Disable();
     }
 
     // Destroys the fish that is inside the indicator
     private void Capture(CallbackContext ctx)
     {
+        transform.position = new Vector3(transform.position.x, transform.position.y-pressValue, transform.position.z);
         // Return if the game is paused. The prevents players from pausing the game to get points.
         if (GameUIController.gamePaused)
         {
@@ -122,6 +128,10 @@ public class Indicator : MonoBehaviour
         }
     }
 
+    void RestorePos(CallbackContext ctx)
+    {
+        transform.position = new Vector3(transform.position.x, originalValue, transform.position.z);
+    }
 
     private void OnTriggerEnter(Collider other)
     {

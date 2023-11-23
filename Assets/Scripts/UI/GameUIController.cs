@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.InputSystem.InputAction;
@@ -15,11 +16,18 @@ public class GameUIController : MonoBehaviour
     [SerializeField]
     private GameObject pausePanel;
     public static bool gamePaused = false;
+    public GameObject gameOverPanel;
+    [SerializeField] private TextMeshProUGUI gameOverScore;
 
     // Start is called before the first frame update
     void Awake()
     {
         init();
+    }
+
+    private void Start()
+    {
+        StartCoroutine(FinishPanel()); //When the sccene starts, we get a timer to show the end panel
     }
 
     private void init()
@@ -41,10 +49,18 @@ public class GameUIController : MonoBehaviour
     private void OnDisable()
     {
         pauseInputAction.performed -= pauseGame;
+        pausePanel.SetActive(false);
+        Time.timeScale = 1.0f;
+        gamePaused = false;
         primaryInputs.Disable();
     }
 
     public void pauseGame(CallbackContext ctx)
+    {
+        pauseGame();
+    }
+
+    public void pauseGame()
     {
         pausePanel.SetActive(!pausePanel.activeInHierarchy);
 
@@ -63,5 +79,14 @@ public class GameUIController : MonoBehaviour
             Conductor.instance.GetMusicSource().Play();
             Conductor.instance.dspTimeOffset = (float)AudioSettings.dspTime - Conductor.instance.dspSongTime - Conductor.instance.songPosition;
         }
+    }
+
+    private IEnumerator FinishPanel()
+    {
+        yield return new WaitForSeconds(Conductor.instance.GetMusicSource().clip.length - 3.5f); //Here we wait to call the finish panel
+        Score.Instance.SaveScore();
+        gameOverPanel.SetActive(true);
+        gameOverScore.text = "Your final score: " + PlayerPrefs.GetFloat("TotalScore");
+        this.enabled = false;
     }
 }

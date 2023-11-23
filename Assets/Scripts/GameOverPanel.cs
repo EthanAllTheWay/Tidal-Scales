@@ -8,7 +8,6 @@ public class PanelGameOver : MonoBehaviour
     public void Menu()
     {
         SceneManager.LoadScene("MenuScene");
-
     }
 
     public void Restart()
