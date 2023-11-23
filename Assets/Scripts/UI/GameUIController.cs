@@ -27,6 +27,11 @@ public class GameUIController : MonoBehaviour
         init();
     }
 
+    private void Start()
+    {
+        StartCoroutine(FinishPanel()); //When the sccene starts, we get a timer to show the end panel
+    }
+
     private void init()
     {
         gamePaused = false;

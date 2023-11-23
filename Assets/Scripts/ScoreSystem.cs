@@ -18,10 +18,18 @@ public class Score : MonoBehaviour
     public float multiplier = 1; //When you don't fail a fish capture, you get a bonus
     private float totalScore; // The Final score 
     public GameObject FloatingScore;
-    [SerializeField] private TextMeshProUGUI gameOverScore;
     [SerializeField] private AudioSource audio;
     [SerializeField] private Conductor conductor; // We need data from this to make the perfect detection
     private Fish fish;           // We need data from this to make the perfect detection
+    
+    private void Awake()
+    {
+        if (Instance != null)
+            Destroy(gameObject);
+
+        Instance = this;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +65,7 @@ public class Score : MonoBehaviour
         showedScore = (baseScore * accuracy) * multiplier;
         if (multiplier < 5) { multiplier += 1; } //x5 is the max multiplier
         totalScore = totalScore + showedScore;
-        
+
     }
 
     public void ShowFloatingScore(Vector3 v)
@@ -76,5 +84,4 @@ public class Score : MonoBehaviour
     {
         PlayerPrefs.SetFloat("TotalScore", totalScore);
     }
-
 }
