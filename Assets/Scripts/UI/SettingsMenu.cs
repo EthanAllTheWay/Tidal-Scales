@@ -6,6 +6,7 @@ using UnityEngine.Rendering;
 
 public class SettingsMenu : MonoBehaviour
 {
+    //Gives the audiomixer the slider value
     [SerializeField] private AudioMixer audioMixer;
    public void AudioVolume(float volume)
     {

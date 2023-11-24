@@ -6,5 +6,6 @@ using UnityEngine;
 
 public class GameData 
 {
+    //We save a float to take json data
    public float GlobalVolume; 
 }
