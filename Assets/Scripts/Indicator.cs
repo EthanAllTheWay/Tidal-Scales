@@ -6,6 +6,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 using UnityEngine.InputSystem.Users;
+using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
 [Serializable]
@@ -47,7 +48,10 @@ public class Indicator : MonoBehaviour
     public static InputControl currentControlInput;
 
     [SerializeField]
-    private TextMeshProUGUI indicatorText;
+    private GameObject indicatorText;
+
+    [SerializeField]
+    private GameObject arrowImage;
 
 
     //A dictionary that I use to find the name of the action specified by the index
@@ -234,11 +238,15 @@ public class Indicator : MonoBehaviour
         switch (schemeType)
         {
             case "Keyboard":
-                indicatorText.text = keyboardControlsDictionary[(int)actionIndex].ToString();
+                indicatorText.SetActive(true);
+                arrowImage.SetActive(false);
+                //indicatorText.text = keyboardControlsDictionary[(int)actionIndex].ToString();
                 Debug.Log("Keyboard being used.");
                 break;
             case "Gamepad":
-                indicatorText.text = gamepadControlsDictionary[(int)actionIndex].ToString();
+                indicatorText.SetActive(false);
+                arrowImage.SetActive(true);
+                //indicatorText.text = gamepadControlsDictionary[(int)actionIndex].ToString();
                 Debug.Log("Gamepad being used.");
                 break;
         }
