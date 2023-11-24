@@ -39,6 +39,7 @@ public class Indicator : MonoBehaviour
     [SerializeField]
     private ParticleSystem splashEffect;
 
+    static int i = 0;
 
     //A dictionary that I use to find the name of the action specified by the index
     Dictionary<int, string> inputActionDictionary = new Dictionary<int, string>()
@@ -55,10 +56,10 @@ public class Indicator : MonoBehaviour
         // We read information from the inputs mapping
         gameplayActionMap = primaryInputs.FindActionMap("Gameplay");
         triggerAction = gameplayActionMap.FindAction(inputActionDictionary[(int)actionIndex]);
-
+        i = 0;
         // We specify what method will be invoked at what time (performed in this case)
         triggerAction.performed += Capture;
-        triggerAction.canceled += RestorePos; 
+        triggerAction.canceled += RestorePos;
     }
 
     private void Start()
@@ -108,7 +109,9 @@ public class Indicator : MonoBehaviour
     // Destroys the fish that is inside the indicator
     private void Capture(CallbackContext ctx)
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y-pressValue, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - pressValue, transform.position.z);
+        i++;
+        Debug.Log(i + ": " + Conductor.instance.songPositionInBeats);
         // Return if the game is paused. The prevents players from pausing the game to get points.
         if (GameUIController.gamePaused)
         {
