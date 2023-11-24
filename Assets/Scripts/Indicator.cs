@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.Users;
 using static UnityEngine.InputSystem.InputAction;
 
 [Serializable]
@@ -46,7 +47,7 @@ public class Indicator : MonoBehaviour
     public static InputControl currentControlInput;
 
     [SerializeField]
-    private TextMeshPro indicatorText;
+    private TextMeshProUGUI indicatorText;
 
 
     //A dictionary that I use to find the name of the action specified by the index
@@ -56,6 +57,22 @@ public class Indicator : MonoBehaviour
         {1, "Left middle trigger"},
         {2 ,"Right middle trigger" },
         {3, "Right trigger"}
+    };
+
+    Dictionary<int, string> keyboardControlsDictionary = new Dictionary<int, string>()
+    {
+        {0, "A"},
+        {1, "S"},
+        {2 ,"D" },
+        {3, "F"}
+    };
+
+    Dictionary<int, string> gamepadControlsDictionary = new Dictionary<int, string>()
+    {
+        {0, "<-"},
+        {1, "?"},
+        {2 ,"^" },
+        {3, "->"}
     };
 
 
@@ -106,6 +123,7 @@ public class Indicator : MonoBehaviour
     private void OnEnable()
     {
         triggerAction.Enable();
+        //InputUser.onChange += SwitchLabels;
     }
 
     private void OnDisable()
@@ -113,7 +131,18 @@ public class Indicator : MonoBehaviour
         triggerAction.performed -= Capture;
         triggerAction.canceled -= RestorePos;
         triggerAction.Disable();
+        //InputUser.onChange -= SwitchLabels;
+
     }
+
+/*    private void SwitchLabels(InputUser inputUser, InputUserChange inputUserChange, InputDevice inputDevice)
+    {
+        if (inputUserChange == InputUserChange.ControlSchemeChanged)
+        {
+            Debug.Log("Input device changed.");
+        }
+
+    }*/
 
     // Destroys the fish that is inside the indicator
     private void Capture(CallbackContext ctx)
@@ -127,18 +156,28 @@ public class Indicator : MonoBehaviour
 
         InputControl currentInput = ctx.action.activeControl;
 
-        if (currentControlInput == null)
+/*        foreach (InputControlScheme controlScheme in primaryInputs.controlSchemes)
+        {
+            Debug.Log("controlScheme: " + controlScheme);
+
+            Debug.Log("controlScheme.name: " + controlScheme.name);
+            Debug.Log("controlScheme.GetType(): " + controlScheme.GetType());
+           
+        }*/
+        
+
+ /*       if (currentControlInput == null)
         {
             currentControlInput = currentInput;
-        }
+        }*/
         
-        foreach (InputDevice inputDevice in InputSystem.devices)
+/*        foreach (InputDevice inputDevice in InputSystem.devices)
         {
             Debug.Log("inputDevice" + inputDevice);
             Debug.Log("inputDevice enabled: " + inputDevice.enabled);
-        }
+        }*/
 
-        if (currentControlInput.GetType() != currentInput.GetType())
+/*        if (currentControlInput.GetType() != currentInput.GetType())
         {
             // Switch input labels to the indicator.
             SwitchInputLabels(currentInput);
@@ -146,7 +185,7 @@ public class Indicator : MonoBehaviour
         else
         {
             Debug.Log("controls have not changed.");
-        }
+        }*/
 
         if (currentFish != null)
         {
@@ -190,11 +229,26 @@ public class Indicator : MonoBehaviour
         }
     }
 
+    public void SwitchInputLabels(String schemeType)
+    {
+        switch (schemeType)
+        {
+            case "Keyboard":
+                indicatorText.text = keyboardControlsDictionary[(int)actionIndex].ToString();
+                Debug.Log("Keyboard being used.");
+                break;
+            case "Gamepad":
+                indicatorText.text = gamepadControlsDictionary[(int)actionIndex].ToString();
+                Debug.Log("Gamepad being used.");
+                break;
+        }
+    }
+
     /// <summary>
     /// Switch the input labels on the Indicator GameObject.
     /// </summary>
     /// <param name="inputType"></param>
-    private void SwitchInputLabels(InputControl inputType)
+    public void SwitchInputLabels(InputControl inputType)
     { 
         switch (inputType)
         {

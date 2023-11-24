@@ -357,11 +357,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac634149585e9243b7f262a6613b03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
+  primaryInputs: {fileID: -944628639613478452, guid: 1d783e2d830d8e047975935cbc00ad65,
     type: 3}
   actionIndex: 0
   pressValue: 0.15
   splashEffect: {fileID: 304564177}
+  indicatorText: {fileID: 884548693}
 --- !u!65 &112740391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -691,11 +692,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac634149585e9243b7f262a6613b03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
+  primaryInputs: {fileID: -944628639613478452, guid: 1d783e2d830d8e047975935cbc00ad65,
     type: 3}
   actionIndex: 1
   pressValue: 0.15
   splashEffect: {fileID: 1687525770}
+  indicatorText: {fileID: 1200249848}
 --- !u!65 &181925857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -886,7 +888,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2a9e9308100997f458fdb17475d69fa0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
+  primaryInputs: {fileID: -944628639613478452, guid: 1d783e2d830d8e047975935cbc00ad65,
     type: 3}
   pausePanel: {fileID: 1227560058}
   gameOverPanel: {fileID: 1403162306}
@@ -2483,6 +2485,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 421030614}
+  - component: {fileID: 421030615}
   m_Layer: 0
   m_Name: Indicators
   m_TagString: Untagged
@@ -2509,6 +2512,23 @@ Transform:
   - {fileID: 1758207202}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &421030615
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 421030613}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8385a6baa28a36489dfd6ba6fa619de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  indicatorList:
+  - {fileID: 181925856}
+  - {fileID: 627340450}
+  - {fileID: 112740390}
+  - {fileID: 1758207204}
 --- !u!1 &439695350
 GameObject:
   m_ObjectHideFlags: 0
@@ -3014,11 +3034,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac634149585e9243b7f262a6613b03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
+  primaryInputs: {fileID: -944628639613478452, guid: 1d783e2d830d8e047975935cbc00ad65,
     type: 3}
   actionIndex: 2
   pressValue: 0.15
   splashEffect: {fileID: 1659246019}
+  indicatorText: {fileID: 1815577822}
 --- !u!54 &627340451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -4901,7 +4922,7 @@ MonoBehaviour:
     m_ActionId: fd1de6d2-00b2-4219-b9cd-98973cfc5057
     m_ActionName: Gameplay/Pause[/Keyboard/escape]
   m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: Keyboard Scheme
+  m_DefaultControlScheme: 
   m_DefaultActionMap: Gameplay
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
@@ -6592,11 +6613,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8ac634149585e9243b7f262a6613b03c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  primaryInputs: {fileID: -944628639613478452, guid: 602d2830602f13a449cb75c8737a7d80,
+  primaryInputs: {fileID: -944628639613478452, guid: 1d783e2d830d8e047975935cbc00ad65,
     type: 3}
   actionIndex: 3
   pressValue: 0.15
   splashEffect: {fileID: 1408845691}
+  indicatorText: {fileID: 376894398}
 --- !u!65 &1758207205
 BoxCollider:
   m_ObjectHideFlags: 0

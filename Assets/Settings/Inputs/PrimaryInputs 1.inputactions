@@ -58,7 +58,7 @@
                     "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
+                    "groups": "Keyboard",
                     "action": "Left trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -69,7 +69,7 @@
                     "path": "<Keyboard>/leftArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
+                    "groups": "Keyboard",
                     "action": "Left trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -80,7 +80,7 @@
                     "path": "<Gamepad>/buttonWest",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Scheme",
+                    "groups": "Gamepad",
                     "action": "Left trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -91,7 +91,7 @@
                     "path": "<Keyboard>/s",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
+                    "groups": "Keyboard",
                     "action": "Left middle trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -102,7 +102,7 @@
                     "path": "<Keyboard>/upArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
+                    "groups": "Keyboard",
                     "action": "Left middle trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -113,7 +113,7 @@
                     "path": "<Gamepad>/buttonNorth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Scheme",
+                    "groups": "Gamepad",
                     "action": "Left middle trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -124,7 +124,7 @@
                     "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
+                    "groups": "Keyboard",
                     "action": "Right middle trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -135,7 +135,7 @@
                     "path": "<Keyboard>/downArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
+                    "groups": "Keyboard",
                     "action": "Right middle trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -146,7 +146,7 @@
                     "path": "<Gamepad>/buttonEast",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Scheme",
+                    "groups": "Gamepad",
                     "action": "Right middle trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -157,7 +157,7 @@
                     "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
+                    "groups": "Keyboard",
                     "action": "Right trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -168,7 +168,7 @@
                     "path": "<Keyboard>/rightArrow",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
+                    "groups": "Keyboard",
                     "action": "Right trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -179,7 +179,7 @@
                     "path": "<Gamepad>/buttonSouth",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Scheme",
+                    "groups": "Gamepad",
                     "action": "Right trigger",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -190,7 +190,7 @@
                     "path": "<Keyboard>/escape",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Keyboard Scheme",
+                    "groups": "Keyboard",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -201,7 +201,7 @@
                     "path": "<Gamepad>/start",
                     "interactions": "",
                     "processors": "",
-                    "groups": "Gamepad Scheme",
+                    "groups": "Gamepad",
                     "action": "Pause",
                     "isComposite": false,
                     "isPartOfComposite": false
@@ -211,8 +211,8 @@
     ],
     "controlSchemes": [
         {
-            "name": "Keyboard Scheme",
-            "bindingGroup": "Keyboard Scheme",
+            "name": "Keyboard",
+            "bindingGroup": "Keyboard",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
@@ -222,8 +222,8 @@
             ]
         },
         {
-            "name": "Gamepad Scheme",
-            "bindingGroup": "Gamepad Scheme",
+            "name": "Gamepad",
+            "bindingGroup": "Gamepad",
             "devices": [
                 {
                     "devicePath": "<Gamepad>",
