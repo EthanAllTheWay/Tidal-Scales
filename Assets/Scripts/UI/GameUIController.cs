@@ -83,7 +83,7 @@ public class GameUIController : MonoBehaviour
 
     private IEnumerator FinishPanel()
     {
-        yield return new WaitForSeconds(Conductor.instance.GetMusicSource().clip.length - 3.5f); //Here we wait to call the finish panel
+        yield return new WaitForSeconds(Conductor.instance.GetMusicSource().clip.length); //Here we wait to call the finish panel
         Score.Instance.SaveScore();
         gameOverPanel.SetActive(true);
         gameOverScore.text = "Your final score: " + PlayerPrefs.GetFloat("TotalScore");
