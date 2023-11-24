@@ -29,9 +29,6 @@ public class Indicator : MonoBehaviour
     private Fish currentFish = null;
     //This is to call score system
     private Score score;
-    public static bool controllerInput;
-    public static bool keyboardInput;
-    public static InputControl currentControlInput;
 
     // Sound variables
     private SoundEffects soundEffectsInstance;
@@ -42,6 +39,14 @@ public class Indicator : MonoBehaviour
     // Splash effect variables
     [SerializeField]
     private ParticleSystem splashEffect;
+
+    // Input variables
+    public static bool controllerInput;
+    public static bool keyboardInput;
+    public static InputControl currentControlInput;
+
+    [SerializeField]
+    private TextMeshPro indicatorText;
 
 
     //A dictionary that I use to find the name of the action specified by the index
@@ -126,6 +131,12 @@ public class Indicator : MonoBehaviour
         {
             currentControlInput = currentInput;
         }
+        
+        foreach (InputDevice inputDevice in InputSystem.devices)
+        {
+            Debug.Log("inputDevice" + inputDevice);
+            Debug.Log("inputDevice enabled: " + inputDevice.enabled);
+        }
 
         if (currentControlInput.GetType() != currentInput.GetType())
         {
@@ -189,6 +200,7 @@ public class Indicator : MonoBehaviour
         {
             case KeyControl:
                 currentControlInput = inputType;
+
                 Debug.Log("Switching labels to keyboard inputs.");
                 break;
             case ButtonControl:
@@ -196,7 +208,6 @@ public class Indicator : MonoBehaviour
                 Debug.Log("Switching labels to Gamepad inputs.");
                 break;
         }
-
     }
 
 }
