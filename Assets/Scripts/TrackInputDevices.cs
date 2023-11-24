@@ -28,32 +28,6 @@ public class TrackInputDevices : MonoBehaviour
             {
                 indicator.SwitchInputLabels(schemeName);
             }
-
-/*            switch (schemeName)
-            {
-                case "Keyboard":
-                    Debug.Log("Keyboard being used.");
-                    break;
-                case "Gamepad":
-                    Debug.Log("Gamepad being used.");
-                    break;
-            }*/
-/*            Debug.Log("user.ToString(): " + user.ToString());
-            Debug.Log("user.GetType(): " + user.GetType());
-            Debug.Log("user.controlScheme: " + user.controlScheme);
-            Debug.Log("user.controlScheme.Value.name: " + user.controlScheme.Value.name);
-            Debug.Log("user.controlScheme.Value.bindingGroup: " + user.controlScheme.Value.bindingGroup);
-            Debug.Log("user.controlScheme.Value.deviceRequirements: " + user.controlScheme.Value.deviceRequirements);
-            Debug.Log("user.controlSchemeMatch: " + user.controlSchemeMatch);
-            Debug.Log("change.ToString(): " + change);
-            if (device == null)
-            {
-                Debug.Log("device is null.");
-            }
-            else
-            {
-                Debug.Log("device is not null.");
-            }*/
         }
             
     }

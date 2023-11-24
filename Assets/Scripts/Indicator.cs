@@ -38,18 +38,13 @@ public class Indicator : MonoBehaviour
     private AudioClip[] missClipArray = null;
     private AudioClip[] catchClipArray = null;
 
-    // Splash effect variables
+    // Splash effect variable
     [SerializeField]
     private ParticleSystem splashEffect;
 
-    // Input variables
-    public static bool controllerInput;
-    public static bool keyboardInput;
-    public static InputControl currentControlInput;
-
+    // Icon GameObjects
     [SerializeField]
     private GameObject indicatorText;
-
     [SerializeField]
     private GameObject arrowImage;
 
@@ -62,23 +57,6 @@ public class Indicator : MonoBehaviour
         {2 ,"Right middle trigger" },
         {3, "Right trigger"}
     };
-
-    Dictionary<int, string> keyboardControlsDictionary = new Dictionary<int, string>()
-    {
-        {0, "A"},
-        {1, "S"},
-        {2 ,"D" },
-        {3, "F"}
-    };
-
-    Dictionary<int, string> gamepadControlsDictionary = new Dictionary<int, string>()
-    {
-        {0, "<-"},
-        {1, "?"},
-        {2 ,"^" },
-        {3, "->"}
-    };
-
 
     private void Awake()
     {
@@ -127,7 +105,6 @@ public class Indicator : MonoBehaviour
     private void OnEnable()
     {
         triggerAction.Enable();
-        //InputUser.onChange += SwitchLabels;
     }
 
     private void OnDisable()
@@ -135,18 +112,7 @@ public class Indicator : MonoBehaviour
         triggerAction.performed -= Capture;
         triggerAction.canceled -= RestorePos;
         triggerAction.Disable();
-        //InputUser.onChange -= SwitchLabels;
-
     }
-
-/*    private void SwitchLabels(InputUser inputUser, InputUserChange inputUserChange, InputDevice inputDevice)
-    {
-        if (inputUserChange == InputUserChange.ControlSchemeChanged)
-        {
-            Debug.Log("Input device changed.");
-        }
-
-    }*/
 
     // Destroys the fish that is inside the indicator
     private void Capture(CallbackContext ctx)
@@ -157,40 +123,6 @@ public class Indicator : MonoBehaviour
         {
             return;
         }
-
-        InputControl currentInput = ctx.action.activeControl;
-
-/*        foreach (InputControlScheme controlScheme in primaryInputs.controlSchemes)
-        {
-            Debug.Log("controlScheme: " + controlScheme);
-
-            Debug.Log("controlScheme.name: " + controlScheme.name);
-            Debug.Log("controlScheme.GetType(): " + controlScheme.GetType());
-           
-        }*/
-        
-
- /*       if (currentControlInput == null)
-        {
-            currentControlInput = currentInput;
-        }*/
-        
-/*        foreach (InputDevice inputDevice in InputSystem.devices)
-        {
-            Debug.Log("inputDevice" + inputDevice);
-            Debug.Log("inputDevice enabled: " + inputDevice.enabled);
-        }*/
-
-/*        if (currentControlInput.GetType() != currentInput.GetType())
-        {
-            // Switch input labels to the indicator.
-            SwitchInputLabels(currentInput);
-        }
-        else
-        {
-            Debug.Log("controls have not changed.");
-        }*/
-
         if (currentFish != null)
         {
             // Hit
@@ -233,6 +165,10 @@ public class Indicator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Switches the Indicator Labels based on the scheme type.
+    /// </summary>
+    /// <param name="schemeType">The input scheme name</param>
     public void SwitchInputLabels(String schemeType)
     {
         switch (schemeType)
@@ -240,36 +176,11 @@ public class Indicator : MonoBehaviour
             case "Keyboard":
                 indicatorText.SetActive(true);
                 arrowImage.SetActive(false);
-                //indicatorText.text = keyboardControlsDictionary[(int)actionIndex].ToString();
-                Debug.Log("Keyboard being used.");
                 break;
             case "Gamepad":
                 indicatorText.SetActive(false);
                 arrowImage.SetActive(true);
-                //indicatorText.text = gamepadControlsDictionary[(int)actionIndex].ToString();
-                Debug.Log("Gamepad being used.");
                 break;
         }
     }
-
-    /// <summary>
-    /// Switch the input labels on the Indicator GameObject.
-    /// </summary>
-    /// <param name="inputType"></param>
-    public void SwitchInputLabels(InputControl inputType)
-    { 
-        switch (inputType)
-        {
-            case KeyControl:
-                currentControlInput = inputType;
-
-                Debug.Log("Switching labels to keyboard inputs.");
-                break;
-            case ButtonControl:
-                currentControlInput = inputType;
-                Debug.Log("Switching labels to Gamepad inputs.");
-                break;
-        }
-    }
-
 }
