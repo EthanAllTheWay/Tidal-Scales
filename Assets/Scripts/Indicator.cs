@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.Users;
+using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
 [Serializable]
@@ -35,9 +38,15 @@ public class Indicator : MonoBehaviour
     private AudioClip[] missClipArray = null;
     private AudioClip[] catchClipArray = null;
 
-    // Splash effect variables
+    // Splash effect variable
     [SerializeField]
     private ParticleSystem splashEffect;
+
+    // Icon GameObjects
+    [SerializeField]
+    private GameObject indicatorText;
+    [SerializeField]
+    private GameObject arrowImage;
 
 
     //A dictionary that I use to find the name of the action specified by the index
@@ -156,4 +165,22 @@ public class Indicator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Switches the Indicator Labels based on the scheme type.
+    /// </summary>
+    /// <param name="schemeType">The input scheme name</param>
+    public void SwitchInputLabels(String schemeType)
+    {
+        switch (schemeType)
+        {
+            case "Keyboard":
+                indicatorText.SetActive(true);
+                arrowImage.SetActive(false);
+                break;
+            case "Gamepad":
+                indicatorText.SetActive(false);
+                arrowImage.SetActive(true);
+                break;
+        }
+    }
 }
