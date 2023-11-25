@@ -1356,8 +1356,8 @@ MonoBehaviour:
   songPosition: 0
   songPositionInBeats: 0
   dspSongTime: 0
-  prespawnBeats: 3
-  dspTimeOffset: 30
+  prespawnBeats: 20
+  dspTimeOffset: 33
   notePrefabArray:
   - {fileID: 3324951503656431599, guid: fe0e60de4de4beb4e9f409bd2bef9713, type: 3}
   - {fileID: 3324951503656431599, guid: 95e1db148fda2264ba52e816117dcfbe, type: 3}
