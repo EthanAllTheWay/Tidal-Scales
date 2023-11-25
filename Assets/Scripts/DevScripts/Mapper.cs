@@ -33,14 +33,15 @@ public class Mapper : MonoBehaviour
     void Update()
     {
         // Sampling beats
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.Space) | Input.GetKeyDown(KeyCode.Mouse0))
         {
             Debug.Log(i + " : " + Conductor.instance.songPositionInBeats);
             i++;
             beatsData += Conductor.instance.songPositionInBeats + "\n";
 
             // Uncomment this line if you want to generate a file with the sampled beats
-           // WriteFile(Application.dataPath + "/" + outBeatsFileLocation, beatsData);
+            //WriteFile(Application.dataPath + "/" + outBeatsFileLocation, beatsData);
+
         }
     }
 
@@ -86,18 +87,18 @@ public class Mapper : MonoBehaviour
         // To illustrate: Values from 50 to 60 refers to the note number in a MIDI keyboard
         for (int i = 0; i < loadedNoteNumbers.Count; i++)
         {
-            if (loadedNoteNumbers[i] < 53)
+            if (loadedNoteNumbers[i] < 60)
                 lines[i] = "0";
-            else if (loadedNoteNumbers[i] < 56)
+            else if (loadedNoteNumbers[i] < 65)
                 lines[i] = "1";
-            else if (loadedNoteNumbers[i] < 60)
+            else if (loadedNoteNumbers[i] < 68)
                 lines[i] = "2";
             else
                 lines[i] = "3";
 
         }
 
-        WriteFile(Application.dataPath + outRemapedNotesColumnPositionFileLocation, lines);
+        WriteFile(Application.dataPath + "/" + outRemapedNotesColumnPositionFileLocation, lines);
     }
 
     void WriteFile(string path, string content)

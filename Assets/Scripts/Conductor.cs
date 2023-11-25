@@ -73,7 +73,8 @@ public class Conductor : MonoBehaviour
         crotchet = 60f / songBpm;
         dspSongTime = (float)AudioSettings.dspTime;
         musicSource.Play();
-        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
+        SetStartTime();
+        songPosition = (float)AudioSettings.dspTime - dspSongTime + dspTimeOffset;
         difference = songPosition - musicSource.time;
         songPosition -= difference;
     }
@@ -87,7 +88,7 @@ public class Conductor : MonoBehaviour
     {
         difference = 0;
         // We update our variables
-        songPosition = (float)AudioSettings.dspTime - dspSongTime - dspTimeOffset;
+        songPosition = (float)AudioSettings.dspTime - dspSongTime + dspTimeOffset;
         difference = songPosition - musicSource.time;
         // We calculate the difference the music source time and the conductor time 
         // and substract it from the current spongPosition to avoid desynchronization problems.
@@ -147,9 +148,8 @@ public class Conductor : MonoBehaviour
     /// Used to start the song/level at a certain point.
     /// </summary>
     /// <param name="startTime">The time to start the song/level at.</param>
-    private void SetStartTime(int startTime)
+    private void SetStartTime()
     {
-        musicSource.time = startTime;
-        dspTimeOffset = -startTime;
+        musicSource.time = dspTimeOffset;
     }
 }

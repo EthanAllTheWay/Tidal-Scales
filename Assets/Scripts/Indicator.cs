@@ -4,6 +4,9 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
+using UnityEngine.InputSystem.Users;
+using UnityEngine.UI;
 using static UnityEngine.InputSystem.InputAction;
 
 [Serializable]
@@ -35,11 +38,15 @@ public class Indicator : MonoBehaviour
     private AudioClip[] missClipArray = null;
     private AudioClip[] catchClipArray = null;
 
-    // Splash effect variables
+    // Splash effect variable
     [SerializeField]
     private ParticleSystem splashEffect;
 
-
+    // Icon GameObjects
+    [SerializeField]
+    private GameObject indicatorText;
+    [SerializeField]
+    private GameObject arrowImage;
     //A dictionary that I use to find the name of the action specified by the index
     Dictionary<int, string> inputActionDictionary = new Dictionary<int, string>()
     {
@@ -55,10 +62,9 @@ public class Indicator : MonoBehaviour
         // We read information from the inputs mapping
         gameplayActionMap = primaryInputs.FindActionMap("Gameplay");
         triggerAction = gameplayActionMap.FindAction(inputActionDictionary[(int)actionIndex]);
-
         // We specify what method will be invoked at what time (performed in this case)
         triggerAction.performed += Capture;
-        triggerAction.canceled += RestorePos; 
+        triggerAction.canceled += RestorePos;
     }
 
     private void Start()
@@ -108,7 +114,7 @@ public class Indicator : MonoBehaviour
     // Destroys the fish that is inside the indicator
     private void Capture(CallbackContext ctx)
     {
-        transform.position = new Vector3(transform.position.x, transform.position.y-pressValue, transform.position.z);
+        transform.position = new Vector3(transform.position.x, transform.position.y - pressValue, transform.position.z);
         // Return if the game is paused. The prevents players from pausing the game to get points.
         if (GameUIController.gamePaused)
         {
@@ -156,4 +162,22 @@ public class Indicator : MonoBehaviour
         }
     }
 
+    /// <summary>
+    /// Switches the Indicator Labels based on the scheme type.
+    /// </summary>
+    /// <param name="schemeType">The input scheme name</param>
+    public void SwitchInputLabels(String schemeType)
+    {
+        switch (schemeType)
+        {
+            case "Keyboard":
+                indicatorText.SetActive(true);
+                arrowImage.SetActive(false);
+                break;
+            case "Gamepad":
+                indicatorText.SetActive(false);
+                arrowImage.SetActive(true);
+                break;
+        }
+    }
 }
