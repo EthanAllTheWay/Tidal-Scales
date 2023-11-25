@@ -39,7 +39,7 @@ public class Indicator : MonoBehaviour
     [SerializeField]
     private ParticleSystem splashEffect;
 
-    static int i = 0;
+    static int i;
 
     //A dictionary that I use to find the name of the action specified by the index
     Dictionary<int, string> inputActionDictionary = new Dictionary<int, string>()
