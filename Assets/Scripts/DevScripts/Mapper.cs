@@ -23,10 +23,10 @@ public class Mapper : MonoBehaviour
     {
         //Uncomment this line if you want to remap the notes position
         //from MIDI keys to the game columns indicators position
-        //RemapNotesColumnPosition();
+        // RemapNotesColumnPosition();
 
         //Uncomment this line when you want to combine previous generated files
-        //CombineFiles();
+        CombineFiles();
     }
 
     // Update is called once per frame
@@ -41,6 +41,7 @@ public class Mapper : MonoBehaviour
 
             // Uncomment this line if you want to generate a file with the sampled beats
             //WriteFile(Application.dataPath + "/" + outBeatsFileLocation, beatsData);
+
         }
     }
 
@@ -94,6 +95,7 @@ public class Mapper : MonoBehaviour
                 lines[i] = "2";
             else
                 lines[i] = "3";
+
         }
 
         WriteFile(Application.dataPath + "/" + outRemapedNotesColumnPositionFileLocation, lines);
