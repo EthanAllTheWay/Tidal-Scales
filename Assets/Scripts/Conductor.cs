@@ -102,7 +102,7 @@ public class Conductor : MonoBehaviour
             Instantiate(notePrefabArray[UnityEngine.Random.Range(0, notePrefabArray.Length)]).GetComponent<Fish>().InitializeValues(
                 spawnPoints[spawnedNote.column].position,
                 indicatorPoints[spawnedNote.column].position,
-                spawnedNote.targetBeat, notesIndex + 1);
+                spawnedNote.targetBeat);
             //We move to the following note
             notesIndex++;
         }
