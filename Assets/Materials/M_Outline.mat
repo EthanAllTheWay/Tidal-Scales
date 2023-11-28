@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Water
-  m_Shader: {fileID: -6465566751694194690, guid: d9eea93335e9b284cbe09db24de09932,
+  m_Name: M_Outline
+  m_Shader: {fileID: -6465566751694194690, guid: 0674927e63398844e955bfd287a38709,
     type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
@@ -40,16 +40,11 @@ Material:
     m_Floats:
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _RippleDensity: 13
-    - _RipplePower: 6
-    - _RippleSpeed: 1
-    - _WaterSpeed: 0.1
-    - _WaveHeight: 0.8
+    - _Thickness: 0.35
     m_Colors:
-    - _BaseColor: {r: 0.15194008, g: 0.7281266, b: 0.8301887, a: 0}
-    - _RippleColor: {r: 0.29436633, g: 0.4245283, b: 0.42368624, a: 0}
+    - _Base_Color: {r: 0, g: 0, b: 0, a: 0}
   m_BuildTextureStacks: []
---- !u!114 &3404759558264293382
+--- !u!114 &3793278419324958011
 MonoBehaviour:
   m_ObjectHideFlags: 11
   m_CorrespondingSourceObject: {fileID: 0}

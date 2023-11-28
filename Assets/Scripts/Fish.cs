@@ -9,15 +9,13 @@ public class Fish : MonoBehaviour
     private Vector3 startPoint;
     private Vector3 endPoint;
     public float beatOfThisNote;
-    public TextMeshProUGUI textMeshPro;
 
     //This sets necesary values.
-    public void InitializeValues(Vector3 initialPosition, Vector3 endPosition, float beat, int n)
+    public void InitializeValues(Vector3 initialPosition, Vector3 endPosition, float beat)
     {
         startPoint = initialPosition;
         endPoint = endPosition;
         beatOfThisNote = beat;
-        textMeshPro.text = n.ToString();
         StartCoroutine(Move());
     }
 
