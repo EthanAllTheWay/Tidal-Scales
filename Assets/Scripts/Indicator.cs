@@ -85,7 +85,7 @@ public class Indicator : MonoBehaviour
     private void Start()
     {
         //We search score system
-        score = GameObject.FindGameObjectWithTag("Fisherman").GetComponent<Score>();
+        score = GameObject.FindGameObjectWithTag("Score Manager").GetComponent<Score>();
 
         // Assign audio clips for the SoundEffects class if instance is not null.
         soundEffectsInstance = SoundEffects.instance;
