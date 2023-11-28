@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Audio;
 using UnityEngine.UIElements;
@@ -20,7 +21,9 @@ public class Score : MonoBehaviour
     [SerializeField] private AudioSource audio;
     [SerializeField] private Conductor conductor; // We need data from this to make the perfect detection
     private Fish fish;           // We need data from this to make the perfect detection
-    
+
+    [SerializeField] private Vector3 messageOffset = new Vector3(0, 0, 0.25f);
+
     private void Awake()
     {
         if (Instance != null)
@@ -67,15 +70,15 @@ public class Score : MonoBehaviour
 
     }
 
-    public void ShowFloatingScore(Vector3 v)
+    public void ShowFloatingScore(Transform spawnPoint)
     {
-        var fs = Instantiate(FloatingScore, v, Quaternion.Euler(0, -180, 0), transform);
+        var fs = Instantiate(FloatingScore, spawnPoint.position+messageOffset, Quaternion.Euler(0, -180, 0));
         fs.GetComponent<TextMeshPro>().text = accuracyTxt;
     }
 
-    public void ShowMissMessage(Vector3 v)
+    public void ShowMissMessage(Transform spawnPoint)
     {
-        var Mmsj = Instantiate(FloatingScore, v, Quaternion.Euler(0, -180, 0), transform);
+        var Mmsj = Instantiate(FloatingScore, spawnPoint.position + messageOffset, Quaternion.Euler(0, -180, 0));
         Mmsj.GetComponent<TextMeshPro>().text = "Miss!";
     }
 

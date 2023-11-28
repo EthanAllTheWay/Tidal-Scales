@@ -141,14 +141,14 @@ public class Indicator : MonoBehaviour
             splashEffect.Play();
             SoundEffects.PlayAudioClip(audioSource, catchClipArray, (int)actionIndex);
             score.addScore(currentFish.beatOfThisNote); // Calls score system to work
-            score.ShowFloatingScore(this.transform.position);
+            score.ShowFloatingScore(transform);
             Destroy(currentFish.gameObject);
             currentFish = null;
         }
         else
         {
             // Miss
-            score.ShowMissMessage(this.transform.position);
+            score.ShowMissMessage(transform);
             SoundEffects.PlayAudioClipAtRandom(audioSource, missClipArray);
             score.multiplier = 1; //If you press a button when there isn't any fish, multiplier resets
         }
