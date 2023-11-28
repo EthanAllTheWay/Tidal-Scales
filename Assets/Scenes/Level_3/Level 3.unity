@@ -362,8 +362,7 @@ MonoBehaviour:
   actionIndex: 0
   pressValue: 0.15
   splashEffect: {fileID: 304564177}
-  indicatorText: {fileID: 884548691}
-  arrowImage: {fileID: 1418553971}
+  IndicatorText: {fileID: 0}
 --- !u!65 &112740391
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -698,8 +697,7 @@ MonoBehaviour:
   actionIndex: 1
   pressValue: 0.15
   splashEffect: {fileID: 1687525770}
-  indicatorText: {fileID: 1200249846}
-  arrowImage: {fileID: 1289436118}
+  IndicatorText: {fileID: 0}
 --- !u!65 &181925857
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3117,8 +3115,7 @@ MonoBehaviour:
   actionIndex: 2
   pressValue: 0.15
   splashEffect: {fileID: 1659246019}
-  indicatorText: {fileID: 1815577820}
-  arrowImage: {fileID: 1899990378}
+  IndicatorText: {fileID: 0}
 --- !u!54 &627340451
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6852,8 +6849,7 @@ MonoBehaviour:
   actionIndex: 3
   pressValue: 0.15
   splashEffect: {fileID: 1408845691}
-  indicatorText: {fileID: 376894396}
-  arrowImage: {fileID: 426982561}
+  IndicatorText: {fileID: 0}
 --- !u!65 &1758207205
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -7463,7 +7459,7 @@ GameObject:
   - component: {fileID: 1849227812}
   m_Layer: 0
   m_Name: Fisherman
-  m_TagString: Fisherman
+  m_TagString: Score Manager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
