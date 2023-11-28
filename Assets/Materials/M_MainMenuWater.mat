@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: M_Water
+  m_Name: M_MainMenuWater
   m_Shader: {fileID: -6465566751694194690, guid: d9eea93335e9b284cbe09db24de09932,
     type: 3}
   m_Parent: {fileID: 0}
@@ -46,7 +46,7 @@ Material:
     - _WaterSpeed: 0.1
     - _WaveHeight: 0.8
     m_Colors:
-    - _BaseColor: {r: 0.15194008, g: 0.7281266, b: 0.8301887, a: 0}
+    - _BaseColor: {r: 0.15194002, g: 0.7281266, b: 0.8301887, a: 0.85882354}
     - _RippleColor: {r: 0.29436633, g: 0.4245283, b: 0.42368624, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &3404759558264293382
