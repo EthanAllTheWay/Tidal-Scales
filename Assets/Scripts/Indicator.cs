@@ -44,9 +44,8 @@ public class Indicator : MonoBehaviour
 
     // Icon GameObjects
     [SerializeField]
-    private GameObject indicatorText;
-    [SerializeField]
-    private GameObject arrowImage;
+    private TextMeshProUGUI IndicatorText;
+
     //A dictionary that I use to find the name of the action specified by the index
     Dictionary<int, string> inputActionDictionary = new Dictionary<int, string>()
     {
@@ -54,6 +53,22 @@ public class Indicator : MonoBehaviour
         {1, "Left middle trigger"},
         {2 ,"Right middle trigger" },
         {3, "Right trigger"}
+    };
+
+    Dictionary<int, string> KeybindingDictionary = new Dictionary<int, string>()
+    {
+        {0, "D"},
+        {1, "F"},
+        {2 ,"J" },
+        {3, "K"}
+    };
+
+    Dictionary<int, string> GamepadBindingDictionary = new Dictionary<int, string>()
+    {
+        {0, "LT"},
+        {1, "LB"},
+        {2 ,"RB" },
+        {3, "RT"}
     };
 
     private void Awake()
@@ -171,12 +186,12 @@ public class Indicator : MonoBehaviour
         switch (schemeType)
         {
             case "Keyboard":
-                indicatorText.SetActive(true);
-                arrowImage.SetActive(false);
+                IndicatorText.SetText(KeybindingDictionary[(int)actionIndex]);
+                IndicatorText.fontSize = 24;
                 break;
             case "Gamepad":
-                indicatorText.SetActive(false);
-                arrowImage.SetActive(true);
+                IndicatorText.SetText(GamepadBindingDictionary[(int)actionIndex]);
+                IndicatorText.fontSize = 20;
                 break;
         }
     }
