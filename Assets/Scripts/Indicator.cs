@@ -146,7 +146,16 @@ public class Indicator : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.CompareTag("Fish"))
+        if (other.gameObject.CompareTag("Fish") && currentFish == null)
+        {
+            currentFish = other.GetComponent<Fish>();
+
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.gameObject.CompareTag("Fish") && currentFish == null)
         {
             currentFish = other.GetComponent<Fish>();
 
