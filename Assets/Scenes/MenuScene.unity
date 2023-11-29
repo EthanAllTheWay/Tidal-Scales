@@ -6033,7 +6033,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Fishtunes
+  m_text: Tidal Scales
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: cc879b5344df7994f86a0e3e0f248b40, type: 2}
   m_sharedMaterial: {fileID: 2112120583241434873, guid: cc879b5344df7994f86a0e3e0f248b40,
@@ -6061,7 +6061,7 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 122.2
+  m_fontSize: 98.7
   m_fontSizeBase: 64
   m_fontWeight: 400
   m_enableAutoSizing: 1
