@@ -51,15 +51,15 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _BottomBrightness: 0
+    - _BottomBrightness: 2
     - _FoamStrength: 5
     - _QueueControl: 0
     - _QueueOffset: 0
     - _VertexOffsetAmount: 0.2
-    - _VoronoiAmount: 8.17
+    - _VoronoiAmount: 5
     - _VoronoiDotDensity: 2
     - _VoronoiSpeed: 2
     m_Colors:
-    - _BaseColor: {r: 0.23292929, g: 0.84298223, b: 0.6544204, a: 0.5882353}
-    - _RippleSpeedDirection: {r: 0, g: 0.2, b: 0, a: 0}
+    - _BaseColor: {r: 0.013609866, g: 0.1923528, b: 0.12695903, a: 1}
+    - _RippleSpeedDirection: {r: 0, g: 0.5, b: 0, a: 0}
   m_BuildTextureStacks: []
