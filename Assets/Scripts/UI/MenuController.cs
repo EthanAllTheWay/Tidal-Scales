@@ -27,7 +27,6 @@ public class MenuController : MonoBehaviour
 
     public void QuitFunction()
     {
-        Debug.Log("Quit Function Called.");
         Application.Quit();
     }
 

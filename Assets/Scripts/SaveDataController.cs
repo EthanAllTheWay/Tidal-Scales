@@ -34,13 +34,8 @@ public class SaveDataController : MonoBehaviour
         {
             string content = File.ReadAllText(savedDataFile);
             savedData = JsonUtility.FromJson<GameData>(content);
-            Debug.Log("Volume value" + savedData.GlobalVolume);
             audioVolume.GetComponent<Slider>().value = savedData.GlobalVolume;
             
-        }
-        else {
-            //Just a debbuging option
-            Debug.Log("There is no jsons");
         }
 
     }
@@ -53,11 +48,9 @@ public class SaveDataController : MonoBehaviour
             GlobalVolume = audioVolume.GetComponent<Slider>().value
              
         };
-        Debug.Log("audioValue" + audioVolume.GetComponent<Slider>().value);
         string JSONstring = JsonUtility.ToJson(newData);
 
         File.WriteAllText(savedDataFile, JSONstring);
-        Debug.Log("Archivo guardado");
     }
 
     public void SavedVolume(float loadedVolume)
