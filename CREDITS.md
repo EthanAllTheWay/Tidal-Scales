@@ -1,10 +1,10 @@
-CREDITS
+# CREDITS
 
-Fonts
+## Fonts
 
 - https://www.dafont.com/sunday-mango.font by Khurasan.
 
-Assets
+## Assets
 
 - https://assetstore.unity.com/packages/3d/vehicles/sea/polygrunt-low-poly-boat-177873, POLYGRUNT - Low Poly Boat, by Polygrunt Studios
 - https://assetstore.unity.com/packages/3d/environments/low-poly-tropical-island-lite-242437, Low Poly Tropical Island Lite, by JustCreate
