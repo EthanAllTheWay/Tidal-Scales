@@ -1,7 +1,9 @@
 # Tidal Scales
-This repository is for the **Game Off 2023** game jam. The theme for this jam is **scale**. We took the fish scale route by making a game, this one here, around fish. This Tidal Scales is also posted on [Itch.io](https://deval508.itch.io/tidalscales).
+
+This repository is for the **Game Off 2023** game jam. The theme for this jam is **scale**. We took the fish scale route by making a game, this one here, around fish. Tidal Scales is also posted on [Itch.io](https://deval508.itch.io/tidalscales).
 
 ## Overview
+
 This is a Rhythm game where the goal of the game is to hit fish notes to catch the fish and to get the best score possible. You will be joined by the fisherman who will travel with you across your adventures as you catch fish in different locations like the beach, lake, or even the jungle?!
 
 ## Controls
