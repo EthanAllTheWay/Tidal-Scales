@@ -19,10 +19,10 @@ Gamepad Controls include:
 - A button (if Xbox) to select menu option.
 
 ## Install instructions
-Download the zip file
-Extract the file.
-Run the "Tidal_Scale.exe"
-Enjoy game!
+1. Download the zip file
+2. Extract the file.
+3. Run the "Tidal_Scale.exe"
+4. Enjoy game!
 
 ## Credits
 
