@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA1Good Job!"
+  m_text: Good Job!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d797368fefd1da7419b5dd469899530c, type: 2}
   m_sharedMaterial: {fileID: -2894459575342152996, guid: d797368fefd1da7419b5dd469899530c,

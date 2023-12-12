@@ -1789,7 +1789,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\xA1Good Job!"
+  m_text: Good Job!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: d797368fefd1da7419b5dd469899530c, type: 2}
   m_sharedMaterial: {fileID: -2894459575342152996, guid: d797368fefd1da7419b5dd469899530c,
@@ -8052,60 +8052,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1952599112}
   m_CullTransparentMesh: 1
---- !u!1 &1988540842
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1988540844}
-  - component: {fileID: 1988540843}
-  m_Layer: 0
-  m_Name: Score Manager
-  m_TagString: Score Manager
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1988540843
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988540842}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 430158f6ec79f434289ab1dabeefc207, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  scoreText: {fileID: 929707028}
-  multiplierTxt: {fileID: 1815024375}
-  baseScore: 100
-  showedScore: 0
-  multiplier: 1
-  FloatingScore: {fileID: 1066257703957258834, guid: e10c3936c515fe748a0f3d26a060b497,
-    type: 3}
-  audio: {fileID: 346127733}
-  conductor: {fileID: 346127732}
-  messageOffset: {x: 0, y: 0, z: 0.25}
---- !u!4 &1988540844
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1988540842}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2012587979
 GameObject:
   m_ObjectHideFlags: 0
@@ -8727,5 +8673,4 @@ SceneRoots:
   - {fileID: 1123952811}
   - {fileID: 2056901568}
   - {fileID: 400382966}
-  - {fileID: 1988540844}
   - {fileID: 344601523}
